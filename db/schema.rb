@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 2021_01_04_042135) do
     t.string "password_digest"
     t.string "firstname"
     t.string "lastname"
-    t.string "address"
   end
 
 end
