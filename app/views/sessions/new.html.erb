@@ -1,0 +1,23 @@
+<h1>Sign Up page</h1>
+
+<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
+    <%= label_tag :firstname, "First Name" %>
+    <%= text_field_tag name="user[firstname]" %>
+
+    <%= label_tag :lastname, "Last Name" %>
+    <%= text_field_tag name="user[lastname]" %>
+
+    <%= label_tag :username %>
+    <%= text_field_tag name="user[username]" %>
+
+    <%= label_tag :email %>
+    <%= text_field_tag name="user[email]" %>
+
+    <%= label_tag :password %>
+    <%= text_field_tag name="user[password_digest]" %>
+
+    <%= label_tag :password_confirmation %>
+    <%= text_field_tag name="user[password_confirmation]" %>
+
+    <%= submit_tag "Sign Up" %>
+<% end %>
