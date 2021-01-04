@@ -11,4 +11,5 @@ Rails.application.routes.draw do
 
   resources :users 
   # get '/users/new', to: 'users#new', as: 'register' --> register_path
+  resources :patients
 end
