@@ -1,4 +1,4 @@
-class CreatePatient < ActiveRecord::Migration[6.0]
+class CreatePatients < ActiveRecord::Migration[6.0]
   def change
     create_table :patients do |t|
       t.integer :healthcareprovider_id
