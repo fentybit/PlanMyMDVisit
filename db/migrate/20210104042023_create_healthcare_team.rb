@@ -9,7 +9,7 @@ class CreateHealthcareTeam < ActiveRecord::Migration[6.0]
       t.text :test_result
       t.text :treatment_plans
       t.text :prescriptions
-      t.currency :billing
+      t.numeric :billing
     end
   end
 end
