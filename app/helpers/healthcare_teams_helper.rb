@@ -1,0 +1,2 @@
+module HealthcareTeamsHelper
+end

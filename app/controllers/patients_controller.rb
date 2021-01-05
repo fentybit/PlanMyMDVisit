@@ -7,10 +7,12 @@ class PatientsController < ApplicationController
 
     def new 
         @patient = Patient.new
+        # @patient.user = User.new 
     end 
 
     def create 
-        @patient = Patient.new(user_params)
+        @patient = Patient.new(patient_params)
+        # @patient.build_user(user_params)
         if @patient.save 
             redirect_to patient_path(@patient)
         else  
@@ -25,7 +27,7 @@ class PatientsController < ApplicationController
     end 
     
     def update 
-        if @patient.update(user_params)
+        if @patient.update(patient_params)
             redirect_to patient_path(@patient)
         else  
             redirect_to edit_patient_path(@patient)
@@ -34,15 +36,16 @@ class PatientsController < ApplicationController
 
     def destroy 
         @patient.destroy
+        redirect_to patients_path
     end 
 
     private 
 
-        def set_user 
+        def set_patient
             @patient = Patient.find_by(id: params[:id])
         end 
 
-        def user_params 
+        def patient_params 
             params.require(:patient).permit(:medical_record, :test_results, :medications)
         end
 end
