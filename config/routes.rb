@@ -11,5 +11,6 @@ Rails.application.routes.draw do
 
   resources :users 
   # get '/users/new', to: 'users#new', as: 'register' --> register_path
-  resources :patients
+  resources :patients # will this be under user?
+  resources :doctors # will this be under user?
 end

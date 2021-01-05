@@ -3,4 +3,6 @@ class Doctor < ApplicationRecord
     belongs_to :user 
     has_many :healthcareteams 
     has_many :patients, through: :healthcareteams 
+
+    validates :title, presence: true, inclusion: { in: %w(Dentist Cardiologist) }
 end 
