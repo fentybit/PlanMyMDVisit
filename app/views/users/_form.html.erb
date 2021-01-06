@@ -2,22 +2,22 @@
 
 <%= form_for @user do |f| %>
     <%= f.label :firstname, "First Name" %>
-    <%= f.text_field name="user[firstname]" %>
+    <%= f.text_field :firstname %>
 
     <%= f.label :lastname, "Last Name" %>
-    <%= f.text_field name="user[lastname]" %>
+    <%= f.text_field :lastname %>
 
     <%= f.label :username %>
-    <%= f.text_field name="user[username]" %>
+    <%= f.text_field :username %>
 
     <%= f.label :email %>
-    <%= f.text_field name="user[email]" %>
+    <%= f.text_field :email %>
 
     <%= f.label :password %>
-    <%= f.text_field name="user[password_digest]" %>
+    <%= f.password_field :password %>
 
     <%= f.label :password_confirmation %>
-    <%= f.text_field name="user[password_confirmation]" %>
+    <%= f.text_field :password_confirmation %>
 
     <%= f.submit "Sign Up" %>
 <% end %>
