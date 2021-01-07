@@ -1,21 +1,21 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-    def index 
-        @users = User.all
-    end 
+    # def index 
+    #     @users = User.all
+    # end 
 
     def new 
         @user = User.new
-        #@patient = @user.patients.build(patient_params)
     end 
 
     def create 
         @user = User.new(user_params)
+        # binding.pry
         if @user.save 
-            redirect_to user_path(@user)
+            redirect_to new_user_patient_path(@user)
         else  
-            redirect_to '/signup'
+            render :new
         end 
     end 
 
@@ -45,6 +45,6 @@ class UsersController < ApplicationController
         end 
 
         def user_params 
-            params.require(:user).permit(:username, :email, :password, :firstname, :lastname)
+            params.require(:user).permit(:username, :email, :password, :password_confirmation, :firstname, :lastname)
         end
 end

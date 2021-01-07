@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root 'application#welcome'
+  root 'application#home'
   
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   post '/signout', to: 'sessions#destroy'
 
-  get '/signup', to: 'users#new'
-  post '/signup', to: 'users#create'
+  # get '/signup', to: 'users#new'
+  # post '/signup', to: 'users#create'
 
-  resources :users, except: [:new, :create] do 
+  resources :users, except: [:index] do 
     resources :patients, only: [:new]     # '/users/:user_id/patients/new'
   end 
 

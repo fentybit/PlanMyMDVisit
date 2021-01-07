@@ -1,23 +1,35 @@
-<%= render partial: 'errors', locals: { record: @user } %>
+<%= form_with model: @user, local: true do |f| %>
+    <div>
+        <%= f.label :firstname, "First Name" %>
+        <%= f.text_field :firstname %>
+    </div>
 
-<%= form_for @user do |f| %>
-    <%= f.label :firstname, "First Name" %>
-    <%= f.text_field :firstname %>
+    <div>
+        <%= f.label :lastname, "Last Name" %>
+        <%= f.text_field :lastname %>
+    </div>
 
-    <%= f.label :lastname, "Last Name" %>
-    <%= f.text_field :lastname %>
+    <div>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+    </div>
 
-    <%= f.label :username %>
-    <%= f.text_field :username %>
+    <div>
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+    </div>
 
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+    <div>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+    </div>
 
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+    <div>
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+    </div>
 
-    <%= f.label :password_confirmation %>
-    <%= f.text_field :password_confirmation %>
-
-    <%= f.submit "Sign Up" %>
+    <div>
+        <%= f.submit "Confirm" %>
+    </div>
 <% end %>

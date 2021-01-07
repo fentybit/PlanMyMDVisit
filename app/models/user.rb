@@ -6,8 +6,9 @@ class User < ApplicationRecord
 
     before_validation :capitalized_name
 
-    # validates :username, presence: true, uniqueness: true 
-    # validates :email, presence: true, uniqueness: true
+    # binding.pry
+    validates :username, presence: true, uniqueness: true 
+    validates :email, presence: true, uniqueness: true
     validates :firstname, presence: true, format: { without: /[0-9]/, message: "Numbers are not allowed." }
     validates :lastname, presence: true, format: { without: /[0-9]/, message: "Numbers are not allowed." }
     # validates :phone_number, length: { is: 10 }
