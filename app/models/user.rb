@@ -4,9 +4,8 @@ class User < ApplicationRecord
     has_many :patients
     has_many :doctors
 
-    # before_validation :capitalized_name
+    before_validation :capitalized_name
 
-    # binding.pry
     validates :username, presence: true, uniqueness: true 
     validates :email, presence: true, uniqueness: true
     validates :firstname, presence: true, format: { without: /[0-9]/, message: "Numbers are not allowed." }
@@ -17,8 +16,8 @@ class User < ApplicationRecord
         self.firstname + " " + self.lastname
     end 
 
-    # def capitalized_name 
-    #     self.firstname = self.firstname.capitalize
-    #     self.lastname = self.lastname.capitalize
-    # end 
+    def capitalized_name 
+        self.firstname = self.firstname.capitalize
+        self.lastname = self.lastname.capitalize
+    end 
 end 

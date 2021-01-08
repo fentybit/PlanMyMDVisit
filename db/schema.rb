@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_04_042135) do
+ActiveRecord::Schema.define(version: 2021_01_04_042023) do
 
   create_table "doctors", force: :cascade do |t|
-    t.integer "healthcareprovider_id"
     t.integer "user_id"
+    t.string "gender"
     t.string "specialty"
     t.string "hospital"
     t.string "address"
@@ -23,15 +23,9 @@ ActiveRecord::Schema.define(version: 2021_01_04_042135) do
     t.integer "zipcode"
   end
 
-  create_table "healthcare_providers", force: :cascade do |t|
-    t.string "org_name"
-  end
-
   create_table "healthcare_teams", force: :cascade do |t|
     t.integer "patient_id"
     t.integer "doctor_id"
-    t.integer "healthcareprovider_id"
-    t.string "department"
     t.datetime "appointment"
     t.text "test_result"
     t.text "treatment_plans"
@@ -40,7 +34,6 @@ ActiveRecord::Schema.define(version: 2021_01_04_042135) do
   end
 
   create_table "patients", force: :cascade do |t|
-    t.integer "healthcareprovider_id"
     t.integer "user_id"
     t.text "medical_record"
     t.text "test_results"
@@ -53,7 +46,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_042135) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.string "gender"
+    t.boolean "admin", default: false
   end
 
 end

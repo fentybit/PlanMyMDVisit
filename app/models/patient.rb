@@ -1,8 +1,7 @@
-class Patient < ApplicationRecord 
-    belongs_to :healthcareprovider 
+class Patient < ApplicationRecord  
     belongs_to :user 
-    has_many :healthcareteams 
-    has_many :doctors, through: :healthcareteams
+    has_many :healthcare_teams
+    has_many :doctors, through: :healthcare_teams
 
     def fullname=(name)
         self.user = User.find_by(name: name)
