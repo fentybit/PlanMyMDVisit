@@ -1,0 +1,5 @@
+<h2>Welcome, <%= @patient.fullname %></h2>
+
+<%= render partial: '/errors', locals: { record: @patient } %>
+
+<%= render 'form' %>

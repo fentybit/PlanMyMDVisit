@@ -4,11 +4,11 @@ class Patient < ApplicationRecord
     has_many :healthcareteams 
     has_many :doctors, through: :healthcareteams
 
-    def patient_name=(name)
+    def fullname=(name)
         self.user = User.find_by(name: name)
     end 
 
-    def patient_name 
+    def fullname 
         self.user ? self.user.fullname : nil 
     end 
 end 
