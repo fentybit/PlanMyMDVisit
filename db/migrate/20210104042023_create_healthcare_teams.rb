@@ -1,6 +1,6 @@
 class CreateHealthcareTeams < ActiveRecord::Migration[6.0]
   def change
-    create_table :healthcareteams do |t|
+    create_table :healthcare_teams do |t|
       t.integer :patient_id
       t.integer :doctor_id
       t.integer :healthcareprovider_id

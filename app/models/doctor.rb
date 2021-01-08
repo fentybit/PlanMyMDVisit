@@ -4,5 +4,5 @@ class Doctor < ApplicationRecord
     has_many :healthcareteams 
     has_many :patients, through: :healthcareteams 
 
-    validates :title, presence: true, inclusion: { in: ["Dentist", "Cardiologist"] }
+    # validates :title, presence: true, inclusion: { in: ["Dentist", "Cardiologist"] }
 end 

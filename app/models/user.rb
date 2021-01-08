@@ -4,7 +4,7 @@ class User < ApplicationRecord
     has_many :patients
     has_many :doctors
 
-    before_validation :capitalized_name
+    # before_validation :capitalized_name
 
     # binding.pry
     validates :username, presence: true, uniqueness: true 
@@ -17,8 +17,8 @@ class User < ApplicationRecord
         self.firstname + " " + self.lastname
     end 
 
-    def capitalized_name 
-        self.firstname = self.firstname.capitalize
-        self.lastname = self.lastname.capitalize
-    end 
+    # def capitalized_name 
+    #     self.firstname = self.firstname.capitalize
+    #     self.lastname = self.lastname.capitalize
+    # end 
 end 

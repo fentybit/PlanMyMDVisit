@@ -13,6 +13,16 @@ Doctor.destroy_all
 HealthcareTeam.destroy_all 
 HealthcareProvider.destroy_all
 
-# Instantiate Doctors from CMS JSON Data
+primary_user = User.create(firstname: "Fenty", lastname: "Hall", username: "fenty", email: "fenty@me.com", password: "fenty", gender: "F")
+primary_user.patients.create(medical_record: "Extremely healthy", test_results: "Too good to be true", medications: "Vitamins only")
 
-# Instantiate Providers from CMS JSON Data
+# Instantiate Doctors from CMS JSON Data
+JSON.parse(File.read("doctors.json")).each do |doctor|
+    user = User.create(firstname: doctor["firstname"], lastname: doctor["lastname"], username: doctor["username"], email: doctor["email"], password: doctor["password"], gender: doctor["gender"])
+
+    doctor = Doctor.create(specialty: doctor["specialty"], hospital: doctor["hospital"], address: doctor["address"], city: doctor["city"], state: doctor["state"], zipcode: doctor["zipcode"])
+    
+    # doctor.user_id = user.id 
+end 
+
+puts "Seeding success!"
