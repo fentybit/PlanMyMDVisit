@@ -11,18 +11,23 @@ User.destroy_all
 Patient.destroy_all
 Doctor.destroy_all 
 HealthcareTeam.destroy_all 
-HealthcareProvider.destroy_all
 
-primary_user = User.create(firstname: "Fenty", lastname: "Hall", username: "fenty", email: "fenty@me.com", password: "fenty", gender: "F")
-primary_user.patients.create(medical_record: "Extremely healthy", test_results: "Too good to be true", medications: "Vitamins only")
+
+# Set up first User Patient
+primary_user = User.create(firstname: "Fenty", lastname: "Hall", username: "fenty", email: "fenty@me.com", password: "fenty")
+primary_user.patients.create(
+    medical_record: "Patient has a mild osteoarthritis. For the sake of the patient's wellbeing, it is advised that the patient must refrain from carrying heavy materials and must allocate up to 30 minutes of exercise daily.", 
+    test_results: "20210107 - X-Ray results suggest mild osteoarthritis.", 
+    medications: "Ibuprofen, 600 mg; thrice a day, after meal. Noproxen Sodium, 500 mg; Once A Day.")
+
 
 # Instantiate Doctors from CMS JSON Data
 JSON.parse(File.read("doctors.json")).each do |doctor|
-    user = User.create(firstname: doctor["firstname"], lastname: doctor["lastname"], username: doctor["username"], email: doctor["email"], password: doctor["password"], gender: doctor["gender"])
+    user = User.create(firstname: doctor["firstname"], lastname: doctor["lastname"], username: doctor["username"], email: doctor["email"], password: doctor["password"], admin: true)
 
-    doctor = Doctor.create(specialty: doctor["specialty"], hospital: doctor["hospital"], address: doctor["address"], city: doctor["city"], state: doctor["state"], zipcode: doctor["zipcode"])
-    
-    # doctor.user_id = user.id 
+    user.doctors.build(gender: doctor["gender"], specialty: doctor["specialty"], hospital: doctor["hospital"], address: doctor["address"], city: doctor["city"], state: doctor["state"], zipcode: doctor["zipcode"])
+
+    user.save 
 end 
 
 puts "Seeding success!"
