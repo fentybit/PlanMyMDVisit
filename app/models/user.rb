@@ -17,7 +17,7 @@ class User < ApplicationRecord
     end 
 
     def capitalized_name 
-        self.firstname = self.firstname.capitalize
-        self.lastname = self.lastname.capitalize
+        self.firstname = self.firstname.titleize
+        self.lastname = self.lastname.titleize
     end 
 end 

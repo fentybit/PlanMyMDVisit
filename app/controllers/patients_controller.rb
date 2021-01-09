@@ -10,7 +10,9 @@ class PatientsController < ApplicationController
     end 
 
     def create 
+        binding.pry
         @patient = Patient.new(patient_params)
+        @patient.doctors.build(doctors_attributes)
         # 3.times { @song.notes.build } --> similar ideas with pre-build healthcare conditions
         if @patient.save 
             redirect_to user_patient_path(current_user, @patient.id)
@@ -48,6 +50,6 @@ class PatientsController < ApplicationController
         end 
 
         def patient_params 
-            params.require(:patient).permit(:user_id, :medical_record, :test_results, :medications, :doctor_ids)
+            params.require(:patient).permit(:user_id, :medical_record, :test_results, :medications, :doctors_attributes)
         end
 end

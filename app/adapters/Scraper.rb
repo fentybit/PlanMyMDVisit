@@ -15,9 +15,9 @@ class Scraper
             if !row.empty?
                 doctor[:firstname] = row["frst_nm"].titleize
                 doctor[:lastname] = row["lst_nm"].titleize
-                doctor[:username] = (row["frst_nm"][0] + row["lst_nm"]).downcase
-                doctor[:email] = (row["frst_nm"][0] + row["lst_nm"]).downcase + "@me.com"
-                doctor[:password] = (row["frst_nm"][0] + row["lst_nm"]).downcase
+                doctor[:username] = (row["frst_nm"][0] + row["lst_nm"].split[-1]).downcase
+                doctor[:email] = (row["frst_nm"][0] + row["lst_nm"].split[-1]).downcase + "@me.com"
+                doctor[:password] = (row["frst_nm"][0] + row["lst_nm"].split[-1]).downcase
                 doctor[:admin] = true
                 
                 doctor[:gender] = row["gndr"]
