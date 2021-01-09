@@ -13,8 +13,8 @@ class Scraper
         data.each do |row|
             doctor = {}
             if !row.empty?
-                doctor[:firstname] = row["frst_nm"].capitalize
-                doctor[:lastname] = row["lst_nm"].capitalize
+                doctor[:firstname] = row["frst_nm"].titleize
+                doctor[:lastname] = row["lst_nm"].titleize
                 doctor[:username] = (row["frst_nm"][0] + row["lst_nm"]).downcase
                 doctor[:email] = (row["frst_nm"][0] + row["lst_nm"]).downcase + "@me.com"
                 doctor[:password] = (row["frst_nm"][0] + row["lst_nm"]).downcase

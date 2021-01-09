@@ -8,4 +8,12 @@ class Doctor < ApplicationRecord
     def fullname 
         self.user ? self.user.fullname : nil 
     end 
+
+    def self.general_practice
+        where(specialty: "General Practice")
+    end 
+
+    def self.family_medicine 
+        where(specialty: "Family Medicine")
+    end 
 end 

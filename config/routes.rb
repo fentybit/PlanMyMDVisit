@@ -7,11 +7,15 @@ Rails.application.routes.draw do
   post '/signout', to: 'sessions#destroy'
 
   resources :users, except: [:index] do 
-    resources :patients, only: [:new, :create, :show]
+    resources :patients, only: [:new, :create, :show, :edit, :update]
   end 
 
   # resources :patients, except: [:new, :create] 
   resources :doctors # '/users/:user_id/doctors/new'
 
   resources :healthcare_teams 
+
+  resources :admin do 
+    resources :users, only: [:index, :destroy]
+  end 
 end

@@ -11,6 +11,7 @@ class PatientsController < ApplicationController
 
     def create 
         @patient = Patient.new(patient_params)
+        # 3.times { @song.notes.build } --> similar ideas with pre-build healthcare conditions
         if @patient.save 
             redirect_to user_patient_path(current_user, @patient.id)
         else  
@@ -47,6 +48,6 @@ class PatientsController < ApplicationController
         end 
 
         def patient_params 
-            params.require(:patient).permit(:user_id, :medical_record, :test_results, :medications)
+            params.require(:patient).permit(:user_id, :medical_record, :test_results, :medications, :doctor_ids)
         end
 end
