@@ -7,13 +7,14 @@ class PatientsController < ApplicationController
 
     def new 
         @patient = Patient.new
+        # 2.times { @patient.doctors.build }
     end 
 
     def create 
-        binding.pry
         @patient = Patient.new(patient_params)
-        @patient.doctors.build(doctors_attributes)
-        # 3.times { @song.notes.build } --> similar ideas with pre-build healthcare conditions
+        @patient.doctors << Doctor.find_by(id: params[:patient][:doctor_id])
+        @patient.healthcare_teams.build(doctor_id: params[:patient][:doctor_id], appointment: "2019-07-02", test_result: "Perfectly healthy", treatment_plans: "Maintain current BMI", prescriptions: "None", billing: 0)
+
         if @patient.save 
             redirect_to user_patient_path(current_user, @patient.id)
         else  
@@ -50,6 +51,6 @@ class PatientsController < ApplicationController
         end 
 
         def patient_params 
-            params.require(:patient).permit(:user_id, :medical_record, :test_results, :medications, :doctors_attributes)
+            params.require(:patient).permit(:user_id, :medical_record, :test_results, :medications)
         end
 end

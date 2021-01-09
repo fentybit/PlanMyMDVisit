@@ -1,17 +1,10 @@
 <%= form_with model: [:user, @patient], local: true do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
-
-    <%= f.fields_for :doctors do |doctor| %>
-        <div>
-            <%= doctor.label :doctor, "Do you have pre-existing General Practitioner?" %>
-            <%= doctor.collection_select :doctor_id, Doctor.general_practice, :id, :fullname, prompt: true %>
-        </div>
-
-        <div>
-            <%= doctor.label :doctor, "Do you have pre-existing Family Medicine?" %>
-            <%= doctor.collection_select :doctor_id, Doctor.family_medicine, :id, :fullname, prompt: true %>
-        </div>
-    <% end %>
+        
+    <div>
+        <%= f.label :doctor, "Do you have pre-existing General Practitioner?" %>
+        <%= f.collection_select :doctor_id, Doctor.general_practice, :id, :fullname, prompt: 'Please select your pre-approved GC' %>
+    </div>
 
     <div>
         <%= f.label :medical_record, "Medical Record" %>
