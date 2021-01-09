@@ -1,32 +1,19 @@
-<%= form_with model: @patient, local: true do |f| %>
+<%= form_with model: [:user, @patient], local: true do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
     <div>
-        <%= f.label :firstname, "First Name" %>
-        <%= f.text_field :firstname %>
+        <%= f.label :medical_record, "Medical Record" %>
+        <%= f.text_area :medical_record %>
     </div>
 
     <div>
-        <%= f.label :lastname, "Last Name" %>
-        <%= f.text_field :lastname %>
+        <%= f.label :test_results, "Test Results" %>
+        <%= f.text_area :test_results %>
     </div>
 
     <div>
-        <%= f.label :username %>
-        <%= f.text_field :username %>
-    </div>
-
-    <div>
-        <%= f.label :email %>
-        <%= f.text_field :email %>
-    </div>
-
-    <div>
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-    </div>
-
-    <div>
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation %>
+        <%= f.label :medications, "Medications" %>
+        <%= f.text_area :medications %>
     </div>
 
     <div>

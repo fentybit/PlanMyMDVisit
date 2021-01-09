@@ -1,4 +1,4 @@
-<h2>Welcome, <%= @patient.fullname %></h2>
+<h2>Welcome, <%= current_user.fullname %></h2>
 
 <%= render partial: '/errors', locals: { record: @patient } %>
 

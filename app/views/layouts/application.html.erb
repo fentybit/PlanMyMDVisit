@@ -27,7 +27,7 @@
           <a class="navbar-brand" href="<%= new_user_path %>">Sign Up</a>
           <a class="navbar-brand" href="/signin">Login</a>
         <% else %>
-          <a class="navbar-brand" href=""><%= current_user.name %>'s Profile</a>
+          <a class="navbar-brand" href=""><%= current_user.firstname %>'s Profile</a>
           <%= link_to 'Log Out', '/signout', method: "delete" %>
         <% end %>
 

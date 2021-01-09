@@ -7,16 +7,14 @@ class PatientsController < ApplicationController
 
     def new 
         @patient = Patient.new
-        # @patient.user = User.new 
     end 
 
     def create 
         @patient = Patient.new(patient_params)
-        # @patient.build_user(user_params)
         if @patient.save 
-            redirect_to patient_path(@patient)
+            redirect_to user_patient_path(current_user, @patient.id)
         else  
-            redirect_to '/signup'
+            render :new
         end 
     end 
 
@@ -40,6 +38,9 @@ class PatientsController < ApplicationController
     end 
 
     private 
+        def set_user 
+            @user = User.find_by(id: params[:user_id])
+        end 
 
         def set_patient
             @patient = Patient.find_by(id: params[:id])

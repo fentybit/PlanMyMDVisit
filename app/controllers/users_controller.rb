@@ -11,9 +11,14 @@ class UsersController < ApplicationController
 
     def create 
         @user = User.new(user_params)
-        # binding.pry
         if @user.save 
-            redirect_to new_user_patient_path(@user)
+            session[:user_id] = @user.id
+            # for user as a patient
+            if @user.admin == false 
+                redirect_to new_user_patient_path(@user)
+            else  
+                redirect_to user_doctor_path(@user) # need to debug
+            end 
         else  
             render :new
         end 
@@ -45,6 +50,6 @@ class UsersController < ApplicationController
         end 
 
         def user_params 
-            params.require(:user).permit(:username, :email, :password, :password_confirmation, :firstname, :lastname)
+            params.require(:user).permit(:username, :email, :password, :password_confirmation, :firstname, :lastname, :admin)
         end
 end

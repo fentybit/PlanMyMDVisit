@@ -1,0 +1,8 @@
+<h2>Welcome, <%= current_user.fullname %></h2>
+
+
+
+<% @patient.doctors.each do |doctor| %>
+    <%= doctor.fullname %>
+    <%= doctor.specialty %>
+<% end %>

@@ -6,16 +6,12 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   post '/signout', to: 'sessions#destroy'
 
-  # get '/signup', to: 'users#new'
-  # post '/signup', to: 'users#create'
-
   resources :users, except: [:index] do 
-    resources :patients, only: [:new]     # '/users/:user_id/patients/new'
+    resources :patients, only: [:new, :create, :show]
   end 
 
-  resources :patients, except: [:new] 
+  # resources :patients, except: [:new, :create] 
   resources :doctors # '/users/:user_id/doctors/new'
 
   resources :healthcare_teams 
-  resources :healthcare_providers
 end

@@ -30,6 +30,11 @@
     </div>
 
     <div>
-        <%= f.submit "Confirm" %>
+        <%= f.label :admin, "Are you an admin or doctor?" %>
+        <%= f.check_box :admin %>
+    </div>
+
+    <div>
+        <%= f.submit %>
     </div>
 <% end %>
