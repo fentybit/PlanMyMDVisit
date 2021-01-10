@@ -28,7 +28,7 @@
           <a class="navbar-brand" href="/signin">Login</a>
         <% else %>
           <a class="navbar-brand" href=""><%= current_user.firstname %>'s Profile</a>
-          <%= link_to 'Log Out', '/signout', method: "delete" %>
+          <%= link_to 'Log Out', signout_path, method: "post" %>
         <% end %>
 
         </div>

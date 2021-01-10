@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id 
             redirect_to user_patient_path(@user)
         else  
+            flash[:notice] = "Please try again."
             render :new 
         end 
     end 
