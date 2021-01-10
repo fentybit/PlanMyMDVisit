@@ -14,4 +14,8 @@ class Doctor < ApplicationRecord
     def self.family_medicine 
         where(specialty: "Family Medicine")
     end 
+
+    def self.specialties 
+        self.select(:specialty).distinct
+    end 
 end 

@@ -6,13 +6,16 @@ class ApplicationController < ActionController::Base
     helper_method :current_user 
 
     def home 
+        if logged_in?
+            @patient = Patient.find(user_id: current_user.id)
+        end 
     end 
 
     def current_user 
         @user = User.find_by(id: session[:user_id])
     end 
 
-    def logged_in?
+    def logged_in? 
         redirect_to '/' unless current_user 
     end 
 end

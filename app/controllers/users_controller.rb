@@ -40,7 +40,8 @@ class UsersController < ApplicationController
 
     def destroy 
         @user.destroy
-        redirect_to users_path
+        flash[:notice] = "Artist deleted."
+        redirect_to '/'
     end 
 
     private 

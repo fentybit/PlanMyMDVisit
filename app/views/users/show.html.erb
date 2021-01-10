@@ -1,1 +1,10 @@
+<%= @user.fullname %><br>
+<%= @user.email %><br>
+
+<% if @user.admin == true %>
+    <i><%= "You are an admin." %></i>
+<% end %>
+
+<%= link_to "Edit Profile", edit_user_path(@user) %>
+
 <%= button_to "Delete User", user_path(@user), method: :delete %>
