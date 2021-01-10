@@ -9,6 +9,8 @@ class CreateDoctors < ActiveRecord::Migration[6.0]
       t.string :city
       t.string :state
       t.integer :zipcode
+
+      t.timestamps
     end
   end
 end

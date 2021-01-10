@@ -11,7 +11,7 @@ class Doctor < ApplicationRecord
         self.user ? self.user.fullname : nil 
     end 
 
-    # def self.family_medicine 
-    #     where(specialty: "Family Medicine")
-    # end 
+    def self.family_medicine 
+        where(specialty: "Family Medicine")
+    end 
 end 

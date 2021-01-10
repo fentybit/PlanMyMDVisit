@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2021_01_04_042023) do
     t.string "city"
     t.string "state"
     t.integer "zipcode"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "healthcare_teams", force: :cascade do |t|
@@ -31,6 +33,8 @@ ActiveRecord::Schema.define(version: 2021_01_04_042023) do
     t.text "treatment_plans"
     t.text "prescriptions"
     t.decimal "billing"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "patients", force: :cascade do |t|
@@ -38,6 +42,8 @@ ActiveRecord::Schema.define(version: 2021_01_04_042023) do
     t.text "medical_record"
     t.text "test_results"
     t.text "medications"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,6 +53,8 @@ ActiveRecord::Schema.define(version: 2021_01_04_042023) do
     t.string "email"
     t.string "password_digest"
     t.boolean "admin", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

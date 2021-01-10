@@ -9,6 +9,8 @@ class CreateHealthcareTeams < ActiveRecord::Migration[6.0]
       t.text :treatment_plans
       t.text :prescriptions
       t.numeric :billing
+
+      t.timestamps
     end
   end
 end

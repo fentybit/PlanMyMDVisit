@@ -5,6 +5,8 @@ class CreatePatients < ActiveRecord::Migration[6.0]
       t.text :medical_record
       t.text :test_results
       t.text :medications
+
+      t.timestamps
     end
   end
 end
