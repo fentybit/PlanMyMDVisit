@@ -31,7 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-# API Data Query from betterdoctor.com
+# Required for JSON parse
 gem 'open-uri'
 gem 'nokogiri'
 gem 'json'

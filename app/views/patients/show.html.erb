@@ -1,7 +1,7 @@
 <h2>Welcome, <%= current_user.fullname %></h2>
 
 <h4><%= link_to "Home", user_patient_path %></h4>
-<h4><%= link_to "Profile", user_path(current_user) %></h4>
+<h4><%= link_to "Profile", user_path(current_user.id) %></h4>
 
 <h3><%= link_to "Schedule an Appointment", new_healthcare_team_path(@patient.healthcare_teams.build) %></h3>
 

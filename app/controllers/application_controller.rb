@@ -3,11 +3,11 @@ class ApplicationController < ActionController::Base
     # For APIs, you may want to use :null_session instead.
     protect_from_forgery with: :exception
     # before_action :logged_in?
-    helper_method :current_user 
+    helper_method :current_user, :current_patient
 
     def home 
-        if logged_in?
-            @patient = Patient.find(user_id: current_user.id)
+        if current_user
+            @patient = Patient.find_by(user_id: current_user.id)
         end 
     end 
 
@@ -17,5 +17,9 @@ class ApplicationController < ActionController::Base
 
     def logged_in? 
         redirect_to '/' unless current_user 
+    end 
+
+    def current_patient 
+        @patient = Patient.find_by(user_id: current_user.id)
     end 
 end

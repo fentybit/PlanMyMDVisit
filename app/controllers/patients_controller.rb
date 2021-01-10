@@ -22,6 +22,9 @@ class PatientsController < ApplicationController
     end 
 
     def show 
+        if !set_patient 
+            current_patient
+        end 
     end 
 
     def edit 
