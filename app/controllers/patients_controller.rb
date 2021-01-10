@@ -12,7 +12,6 @@ class PatientsController < ApplicationController
 
     def create
         @patient = Patient.new(patient_params)
-        @patient.doctors << Doctor.find_by(id: params[:patient][:doctor_id])
         @patient.healthcare_teams.build(doctor_id: params[:patient][:doctor_id], appointment: "2019-07-02", test_result: "Perfectly healthy", treatment_plans: "Maintain current BMI", prescriptions: "None", billing: 0)
 
         if @patient.save 
