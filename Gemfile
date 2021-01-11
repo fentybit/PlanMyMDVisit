@@ -37,6 +37,8 @@ gem 'nokogiri'
 gem 'json'
 gem 'pry'
 
+gem 'materialize-sass', '~> 1.0.0'
+
 # Authentication System
 gem 'omniauth'
 gem 'omniauth-github'
