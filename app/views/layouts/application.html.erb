@@ -10,15 +10,19 @@
   </head>
 
   <nav>
-    <div>
-      <% if logged_in? && current_patient %>
-        <%= link_to "Home", user_patient_path(current_user, current_patient) %>
-        <%= link_to "Profile", user_path(current_user.id) %>
-        <%= button_to "Log Out", logout_path, method: "delete" %>
-      <% else %>
-        <%= link_to "Home", root_path %>
-        <%= link_to "Login", signin_path %>
-      <% end %>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">plan my MD visit</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if logged_in? && current_patient %>
+          <li><%= link_to "Home", user_patient_path(current_user, current_patient), class: "waves-effect waves-light btn" %></li>
+          <li><%= link_to "Doctors", doctors_path, class: "waves-effect waves-light btn" %></li>
+          <li><%= link_to "Profile", user_path(current_user.id), class: "waves-effect waves-light btn" %></li>
+          <li><%= button_to "Log Out", logout_path, method: "delete", class: "waves-effect waves-light btn"  %></li>
+        <% else %>
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Login", signin_path %></li>
+        <% end %>
+      </ul>
     </div>
   </nav>
 
