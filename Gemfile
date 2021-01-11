@@ -37,6 +37,10 @@ gem 'nokogiri'
 gem 'json'
 gem 'pry'
 
+# Authentication System
+gem 'omniauth'
+gem 'omniauth-github'
+
 # dotenv for Environment Variables
 gem 'dotenv-rails', groups: [:development, :test]
 

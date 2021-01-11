@@ -13,20 +13,20 @@
     -->
   </head>
 
-  <body>
-    <div class="row">
-      <div class="col s12">
-        <ul class="tabs">
-          <% if !current_user %>
-            <a href="<%= root_url %>">Home</a>
-            <a href="/signin">Login</a>
-          <% else %>
-            <a href="<%= user_patient_path(current_user, current_patient) %>"><%= current_user.firstname %>'s Profile</a>
-            <%= button_to 'Log Out', logout_path, method: :delete %>
-          <% end %>
-        </ul>
-      </div>
+  <nav>
+    <div>
+      <% if logged_in? %>
+        <%= link_to "Home", user_patient_path(current_user, current_patient) %>
+        <%= link_to "Profile", user_path(current_user.id) %>
+        <%= button_to "Log Out", logout_path, method: :delete %>
+      <% else %>
+        <%= link_to "Home", root_path %>
+        <%= link_to "Login", signin_path %>
+      <% end %>
     </div>
+  </nav>
+
+  <body>
 
     <!-- content -->
     <div class="container"  role="main">

@@ -5,19 +5,33 @@ class SessionsController < ApplicationController
     end 
 
     def create 
-        @user = User.find_by(username: params[:user][:username])
-        if @user && @user.authenticate(params[:user][:password])
-            session[:user_id] = @user.id 
-            @patient = Patient.find_by(user_id: @user.id)
+        if auth_hash != nil 
+            @user = User.find_or_create_from_auth_hash(auth_hash)
+            session[:user_id] = @user.id
+            @patient = Patient.find_or_create_by(user_id: @user.id)
             redirect_to user_patient_path(@user, @patient)
         else  
-            flash[:alert] = "Please try again."
-            render :new 
+            @user = User.find_by(username: params[:user][:username])
+            
+            if @user && @user.authenticate(params[:user][:password])
+                session[:user_id] = @user.id 
+                @patient = Patient.find_by(user_id: @user.id)
+                redirect_to user_patient_path(@user, @patient)
+            else  
+                flash[:alert] = "Please try again."
+                render :new 
+            end 
         end 
     end 
 
-    def destroy 
+    def destroy
         session.delete(:user_id)
         redirect_to '/'
     end 
+
+    private 
+
+        def auth_hash
+            request.env['omniauth.auth']
+        end 
 end

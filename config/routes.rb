@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  # Omniauth GitHub route
+  match '/auth/github/callback', to: 'sessions#create', via: [:get, :post]
+
   resources :users, except: [:index] do 
     resources :patients, only: [:new, :create, :show, :edit, :update]
   end 

@@ -20,4 +20,14 @@ class User < ApplicationRecord
         self.firstname = self.firstname.titleize
         self.lastname = self.lastname.titleize
     end 
+
+    def self.find_or_create_from_auth_hash(auth_hash)
+        @user = User.find_by(username: auth_hash.uid)
+
+        if @user   
+            @user 
+        else 
+            @user = User.create(firstname: auth_hash["info"].name.split[0], lastname: auth_hash["info"].name.split[1], username: auth_hash.uid, email: auth_hash["info"].name.split.join.downcase + "@me.com", password: SecureRandom.hex)
+        end 
+    end 
 end 
