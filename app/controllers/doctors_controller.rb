@@ -8,6 +8,6 @@ class DoctorsController < ApplicationController
     end 
 
     def create
-
+        
     end 
 end 
