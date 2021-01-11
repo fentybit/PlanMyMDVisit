@@ -3,7 +3,7 @@
 <h4><%= link_to "Home", user_patient_path %></h4>
 <h4><%= link_to "Profile", user_path(current_user.id) %></h4>
 
-<h3><%= link_to "Schedule an Appointment", new_healthcare_team_path(@patient.healthcare_teams.build) %></h3>
+<h3><%= link_to "Schedule an Appointment", select_specialty_path(@patient.doctors.build) %></h3>
 
 <% @patient.doctors.each do |doctor| %>
     <div>

@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   # resources :patients, except: [:new, :create] 
   resources :doctors # '/users/:user_id/doctors/new'
 
+  # get '/select_specialty', to: 'doctors#select_specialty'
+  # get '/select_doctor', to: 'doctors#select_doctor'
+
   resources :healthcare_teams 
 
   resources :admin do 

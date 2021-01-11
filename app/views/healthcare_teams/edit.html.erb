@@ -1,8 +1,6 @@
 <%= render partial: '/errors', locals: { record: @healthcare_team } %>
 
 <%= form_with model: @healthcare_team, local: true do |f| %>
-    <%= f.hidden_field :patient_id, value: current_patient.id %>
-
     <div>
         <%= f.label :specialty, "What doctor specialty?" %>
         <%= f.collection_select :doctor, Doctor.specialties, :specialty, :specialty, prompt: 'Please select' %>
@@ -10,15 +8,6 @@
 
     <div>
         <%= f.label :doctor_fullname, "Select your doctor preference" %>
-        <%= f.collection_select :doctor_id, Doctor.by_specialty(:specialty), :id, :fullname, prompt: 'Please select' %>
-    </div>
-
-    <div>
-        <%= f.label :appointment, "Appointment schedule preference" %>
-        <%= f.datetime_field :appointment, min: DateTime.now, min: "T08:00:00" %>
-    </div>
-
-    <div>
-        <%= f.submit "Next" %>
+        <%= f.collection_select :doctor_id, Doctor.where(specialty: @doctor.specialty), :id, :fullname, prompt: 'Please select' %>
     </div>
 <% end %>

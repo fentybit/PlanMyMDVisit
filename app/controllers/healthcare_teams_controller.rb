@@ -5,12 +5,15 @@ class HealthcareTeamsController < ApplicationController
         @healthcare_teams = HealthcareTeam.all
     end 
 
+    # patients, doctors and admin
     def new 
         @healthcare_team = HealthcareTeam.new
     end 
 
     def create 
-        @healthcare_team = HealthcareTeam.new(healthcareteam_params)
+        binding.pry
+        @healthcare_team = current_patient.healthcare_teams.build(healthcareteam_params)
+        @doctors = Doctor.by_specialty(params[:specialty])
         if @healthcare_team.save 
             redirect_to healthcare_team_path(@patient)
         else  

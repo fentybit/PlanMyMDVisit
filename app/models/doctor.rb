@@ -15,7 +15,11 @@ class Doctor < ApplicationRecord
         where(specialty: "Family Medicine")
     end 
 
-    def self.specialties 
-        self.select(:specialty).distinct
+    def self.specialties
+        select(:specialty).distinct.order(specialty: :asc)
+    end 
+
+    def self.by_specialty(specialty)
+        where(specialty: specialty)
     end 
 end 

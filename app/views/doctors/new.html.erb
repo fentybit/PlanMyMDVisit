@@ -1,0 +1,13 @@
+<%= render partial: '/errors', locals: { record: @doctor } %>
+
+<%= form_with model: @healthcare_team, local: true do |f| %>
+    <div>
+        <%= f.label :specialty, "What doctor specialty?" %>
+        <%= f.collection_select :doctor, Doctor.specialties, :specialty, :specialty, prompt: 'Please select' %>
+    </div>
+
+    <div>
+        <%= f.label :doctor_fullname, "Select your doctor preference" %>
+        <%= f.collection_select :doctor_id, Doctor.where(specialty: @doctor.specialty), :id, :fullname, prompt: 'Please select' %>
+    </div>
+<% end %>
