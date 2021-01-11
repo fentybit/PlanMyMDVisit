@@ -11,7 +11,7 @@ class HealthcareTeamsController < ApplicationController
     end 
 
     def create 
-        binding.pry
+        # binding.pry
         @healthcare_team = current_patient.healthcare_teams.build(healthcareteam_params)
         @doctors = Doctor.by_specialty(params[:specialty])
         if @healthcare_team.save 
