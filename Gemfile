@@ -37,6 +37,7 @@ gem 'nokogiri'
 gem 'json'
 gem 'pry'
 
+# Materialize SASS
 gem 'materialize-sass', '~> 1.0.0'
 
 # Authentication System
