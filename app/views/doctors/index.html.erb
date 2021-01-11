@@ -1,4 +1,4 @@
-<h3>Doctors available in our healthcare provider:</h3>
+<h4>Doctors available in our healthcare provider:</h4>
 
 <% @doctors.order(specialty: :asc).each do |doctor| %>
     <%= doctor.specialty %>
