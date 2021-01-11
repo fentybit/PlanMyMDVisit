@@ -5,12 +5,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!--
-    Import Google Icon Font
+    <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    Import materialize.css
-    <link type="text/css" rel="stylesheet" href="app/assets/stylesheets/css/materialize.css" media="screen,projection"/>
-    -->
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
   <nav>
@@ -18,7 +19,7 @@
       <% if logged_in? %>
         <%= link_to "Home", user_patient_path(current_user, current_patient) %>
         <%= link_to "Profile", user_path(current_user.id) %>
-        <%= button_to "Log Out", logout_path, method: :delete %>
+        <%= button_to "Log Out", logout_path, method: "delete" %>
       <% else %>
         <%= link_to "Home", root_path %>
         <%= link_to "Login", signin_path %>
@@ -33,10 +34,8 @@
       <%= yield %>
     </div>
 
-    <!--Import jQuery before materialize.js
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="app/assets/stylesheets/js/materialize.min.js"></script>
-    -->
+    <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="js/materialize.min.js"></script>
 
     <div class="footer">
       <small>&copy; 2021 <strong>Plan My MD Visit</strong></small>
