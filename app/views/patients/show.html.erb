@@ -1,6 +1,6 @@
 <h4>Welcome, <%= current_user.fullname %></h4>
 
-<h3><%= link_to "Schedule an Appointment", new_healthcare_team_path(@patient.healthcare_teams.build) %></h3>
+<h3><%= link_to "Schedule an Appointment", select_specialty_path %></h3>
 
 <% @patient.doctors.each do |doctor| %>
     <div>

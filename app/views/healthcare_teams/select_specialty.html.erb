@@ -1,0 +1,10 @@
+<%= form_with url: new_patient_healthcare_team_path(current_patient, @healthcare_team), method: "post", local: true do |f| %>
+    <div>
+        <%= f.label :specialty, "What doctor specialty?" %>
+        <%= f.collection_select :specialty, Doctor.specialties, :specialty, :specialty, prompt: 'Please select', include_blank: false %>
+    </div>
+
+    <div>
+        <%= f.submit "Next" %>
+    </div>
+<% end %>

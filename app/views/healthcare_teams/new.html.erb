@@ -1,17 +1,11 @@
 <%= render partial: '/errors', locals: { record: @healthcare_team } %>
 
-<%= form_with(model: @healthcare_team, url: edit_healthcare_team_path, method: "post", local: true) do |f| %>
+<%= form_with(model: [:patient, @healthcare_team], local: true) do |f| %>
     <%= f.hidden_field :patient_id, value: current_patient.id %>
 
     <div>
-        <%= f.label :specialty, "What doctor specialty?" %>
-        <%= f.collection_select :doctor, Doctor.specialties, :specialty, :specialty, prompt: 'Please select' %>
-    </div>
-    
-
-    <div>
-        <%= f.label :doctor_fullname, "Select your doctor preference" %>
-        <%= f.collection_select :doctor_id, Doctor.by_specialty(:specialty), :id, :fullname, prompt: 'Please select' %>
+        <%= f.label :doctor_fullname, "Available In-Network Doctors" %>
+        <%= f.collection_select :doctor_id, @doctors, :id, :fullname, prompt: 'Please select' %>
     </div>
 
     <div>
@@ -21,6 +15,6 @@
     </div>
 
     <div>
-        <%= f.submit "Next" %>
+        <%= f.submit "Schedule This Appointment" %>
     </div>
 <% end %>

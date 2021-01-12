@@ -15,7 +15,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             # for user as a patient
             if @user.admin == false 
-                redirect_to new_user_patient_path(@user)
+                redirect_to new_patient_path
             else  
                 redirect_to user_doctor_path(@user) # need to debug
             end 

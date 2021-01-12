@@ -14,10 +14,10 @@
       <a href="#" class="brand-logo">plan my MD visit</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if logged_in? && current_patient %>
-          <li><%= link_to "Home", user_patient_path(current_user, current_patient), class: "waves-effect waves-light btn" %></li>
+          <li><%= link_to "Home", patient_path(current_patient), class: "waves-effect waves-light btn" %></li>
           <li><%= link_to "Doctors", doctors_path, class: "waves-effect waves-light btn" %></li>
           <li><%= link_to "Profile", user_path(current_user.id), class: "waves-effect waves-light btn" %></li>
-          <li><%= button_to "Log Out", logout_path, method: "delete", class: "waves-effect waves-light btn"  %></li>
+          <li><%= button_to "Log Out", logout_path, method: "delete", class: "waves-effect waves-light btn" %></li>
         <% else %>
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Login", signin_path %></li>
@@ -27,14 +27,21 @@
   </nav>
 
   <body>
+    
+    <% flash.each do |type, msg| %>
+      <div>
+        <i><%= msg %></i>
+      </div>
+    <% end %>
 
     <!-- content -->
-    <div class="container"  role="main">
+    <div>
       <%= yield %>
     </div>
 
     <div class="footer">
       <small>&copy; 2021 <strong>Plan My MD Visit</strong></small>
     </div>
+
   </body>
 </html>

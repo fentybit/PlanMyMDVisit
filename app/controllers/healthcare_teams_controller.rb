@@ -5,19 +5,34 @@ class HealthcareTeamsController < ApplicationController
         @healthcare_teams = HealthcareTeam.all
     end 
 
+    def select_specialty 
+    end 
+
     # patients, doctors and admin
     def new 
         @healthcare_team = HealthcareTeam.new
-    end 
 
+        if params['specialty'] == ""
+            flash[:error] = "You must select a specialty."
+            redirect_to '/select_specialty'
+        else   
+            @doctors = Doctor.by_specialty(params['specialty'])
+        end
+    end 
+    
     def create 
-        # binding.pry
-        @healthcare_team = current_patient.healthcare_teams.build(healthcareteam_params)
-        @doctors = Doctor.by_specialty(params[:specialty])
-        if @healthcare_team.save 
-            redirect_to healthcare_team_path(@patient)
+        if params["healthcare_team"]["doctor_id"] == "" || params["healthcare_team"]["appointment"] == ""
+            flash[:error] = "Please select doctor and appointment time."
+            redirect_to select_specialty_path 
         else  
-            redirect_to '/signup'
+            @healthcare_team = current_patient.healthcare_teams.build(healthcareteam_params)
+            @healthcare_team.doctor = Doctor.find_by(id: params["healthcare_team"]["doctor_id"])
+
+            if @healthcare_team.save 
+                redirect_to patient_healthcare_team_path(current_patient, @healthcare_team)
+            else  
+                redirect_to patient_path(current_patient)
+            end 
         end 
     end 
 

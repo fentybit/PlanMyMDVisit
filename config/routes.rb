@@ -9,17 +9,21 @@ Rails.application.routes.draw do
   # Omniauth GitHub route
   match '/auth/github/callback', to: 'sessions#create', via: [:get, :post]
 
-  resources :users, except: [:index] do 
-    resources :patients, only: [:new, :create, :show, :edit, :update]
-  end 
+  resources :users, except: [:index]  
+   
+  resources :patients, only: [:new, :create, :show, :edit, :update] do
+    resources :healthcare_teams, only: [:index, :new, :create, :show]
+  end
+
+  get '/select_specialty', to: 'healthcare_teams#select_specialty'
+  post '/patients/:patient_id/healthcare_teams/new', to: 'healthcare_teams#new'
 
   # resources :patients, except: [:new, :create] 
   resources :doctors # '/users/:user_id/doctors/new'
 
-  get '/select_specialty', to: 'doctors#select_specialty'
+  
   # get '/select_doctor', to: 'doctors#select_doctor'
 
-  resources :healthcare_teams 
 
   resources :admin do 
     resources :users, only: [:index, :destroy]

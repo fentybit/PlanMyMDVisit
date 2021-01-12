@@ -1,4 +1,4 @@
-<%= form_with model: [:user, @patient], local: true do |f| %>
+<%= form_with model: @patient, local: true do |f| %>
     <%= f.hidden_field :user_id, value: current_user.id %>
         
     <div>
@@ -22,6 +22,6 @@
     </div>
 
     <div>
-        <%= f.submit "Confirm" %>
+        <%= f.submit %>
     </div>
 <% end %>
