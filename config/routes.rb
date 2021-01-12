@@ -20,7 +20,6 @@ Rails.application.routes.draw do
 
   # resources :patients, except: [:new, :create] 
   resources :doctors # '/users/:user_id/doctors/new'
-  post '/doctors', to: 'doctors#index'
   
   # get '/select_doctor', to: 'doctors#select_doctor'
 

@@ -2,7 +2,11 @@ class DoctorsController < ApplicationController
     before_action :set_doctor, only: [:show, :edit, :update, :destroy]
 
     def index 
-        @doctors = Doctor.all
+        if !params[:specialty].blank?
+            @doctors = Doctor.by_specialty(params[:specialty])
+        else  
+            @doctors = Doctor.all
+        end 
     end 
 
     def new 

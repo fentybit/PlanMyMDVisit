@@ -1,10 +1,18 @@
-<h4>Doctors available in our healthcare provider:</h4>
+<h4>Doctors available in our healthcare provider</h4>
+
+<div>
+    <h5>Filter doctors by specialty:</h5>
+    <%= form_tag("/doctors", method: "get") do %>
+        <%= select_tag "specialty", options_from_collection_for_select(Doctor.specialties, :specialty, :specialty), prompt: 'Please Select' %>
+        <%= submit_tag "Filter" %>
+    <% end %>
+</div>
 
 <br>
 
 <% @doctors.order(specialty: :asc).each do |doctor| %>
     <div>
         <strong><%= link_to "#{ doctor.fullname }", doctor_path(doctor) %></strong>
-        <i><%= link_to "#{ doctor.specialty }", doctors_path %></i>
+        <i><%= doctor.specialty %></i>
     </div>
 <% end %>
