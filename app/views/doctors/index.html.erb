@@ -1,5 +1,8 @@
 <h4>Doctors available in our healthcare provider:</h4>
 
+Allergy/Immunology
+<%= @doctors.where(specialty: "Allergy/Immunology").map(&fullname) %>
+
 <% @doctors.order(specialty: :asc).each do |doctor| %>
     <%= doctor.specialty %>
     <%= doctor.fullname %><br>

@@ -5,9 +5,9 @@
 <% end %>
 
 <h4><%= @healthcare_team.appointment.strftime("%B %d, %Y at %k:%M") %></h4>
-<h3><%= @healthcare_team.doctor.specialty %></h3>
-<h4><%= @healthcare_team.doctor.fullname %></h4>
-<h4><%= @healthcare_team.doctor.hospital %></h4>
+<h3><%= @healthcare_team.doctor_specialty %></h3>
+<h4><%= @healthcare_team.doctor_fullname %></h4>
+<h4><%= @healthcare_team.doctor_hospital %></h4>
 
 <% if !@healthcare_team.test_result.nil? %>
     <h3>Test Result:</h3>

@@ -1,0 +1,6 @@
+<% current_patient.healthcare_teams.each do |healthcare_team| %>
+    <div>
+        <h4><%= healthcare_team.doctor_fullname %></h4>
+        <%= healthcare_team.doctor_specialty %>
+    </div>
+<% end %>
