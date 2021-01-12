@@ -1,9 +1,14 @@
-<%= @user.fullname %><br>
-<%= @user.email %><br>
+Fullname: <%= @user.fullname %><br>
+Username: <%= @user.username %><br>
+Email: <%= @user.email %><br>
 
 <% if @user.admin == true %>
-    <i><%= "You are an admin." %></i>
+    <i>You are an admin</i>
+<% else %>
+    <i>You are a patient</i>
 <% end %>
+
+<p><i>Your profile was last updated on <%= date_and_time(@user.created_at) %></i></p>
 
 <%= link_to "Edit Profile", edit_user_path(@user) %>
 

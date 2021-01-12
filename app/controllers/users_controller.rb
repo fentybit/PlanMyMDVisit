@@ -1,36 +1,39 @@
 class UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-    # def index 
-    #     @users = User.all
-    # end 
+    # admin + doctor privilege
+    def index 
+        @users = User.all
+    end 
 
-    def new  ##
+    def new
         @user = User.new
     end 
 
-    def create  ##
+    def create
         @user = User.new(user_params)
         if @user.save 
             session[:user_id] = @user.id
-            # for user as a patient
+            # user as a patient
             if @user.admin == false 
                 redirect_to new_patient_path
+            # user as an admin
             else  
-                redirect_to user_doctor_path(@user) # need to debug
+                redirect_to users_path # need to debug
             end 
         else  
             render :new
         end 
     end 
 
-    def show  ##
+    # admin + doctor privilege
+    def show  
     end 
 
-    def edit  ##
+    def edit
     end 
     
-    def update  ##
+    def update
         if @user.update(user_params)
             redirect_to user_path(@user)
         else  
