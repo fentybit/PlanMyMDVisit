@@ -1,7 +1,7 @@
 class DoctorsController < ApplicationController 
     before_action :set_doctor, only: [:show, :edit, :update, :destroy]
 
-    def index 
+    def index ##
         if !params[:specialty].blank?
             @doctors = Doctor.by_specialty(params[:specialty])
         else  
@@ -9,20 +9,20 @@ class DoctorsController < ApplicationController
         end 
     end 
 
-    def new 
+    def new  ##
         @doctor = Doctor.new 
     end 
 
-    def create
+    def create ##
         # need to log in as admin    
     end 
 
-    def show 
+    def show  ##
     end 
 
-    private 
+    private  ##
 
-        def set_doctor
+        def set_doctor ##
             @doctor = Doctor.find_by(id: params[:id])
         end 
 end 

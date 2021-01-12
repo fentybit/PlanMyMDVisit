@@ -1,15 +1,12 @@
 class HealthcareTeamsController < ApplicationController
     before_action :set_healthcareteam, only: [:show, :edit, :update, :destroy]
 
-    def index # admin privilege
+    def index # admin privilege  ##
         @healthcare_teams = HealthcareTeam.all
     end 
 
-    def select_specialty 
-    end 
-
     # patients, doctors and admin
-    def new 
+    def new  ##
         @healthcare_team = HealthcareTeam.new
 
         if params['specialty'] == ""
@@ -20,7 +17,7 @@ class HealthcareTeamsController < ApplicationController
         end
     end 
     
-    def create 
+    def create  ##
         if params["healthcare_team"]["doctor_id"] == "" || params["healthcare_team"]["appointment"] == ""
             flash[:error] = "Please select doctor and appointment time."
             redirect_to select_specialty_path 
@@ -36,13 +33,13 @@ class HealthcareTeamsController < ApplicationController
         end 
     end 
 
-    def show 
+    def show  ##
     end 
 
-    def edit 
+    def edit  ##
     end 
     
-    def update 
+    def update  ##
         if @healthcare_team.update(healthcareteam_params)
             redirect_to healthcare_team_path(@healthcare_team)
         else  
@@ -50,18 +47,18 @@ class HealthcareTeamsController < ApplicationController
         end 
     end
 
-    def destroy 
+    def destroy ##
         @healthcare_team.destroy
         redirect_to healthcareteams_path
     end 
 
     private 
 
-        def set_healthcareteam
+        def set_healthcareteam ##
             @healthcare_team = HealthcareTeam.find_by(id: params[:id])
         end 
 
-        def healthcareteam_params 
+        def healthcareteam_params  ##
             params.require(:healthcare_team).permit(:department, :appointment, :test_result, :treatment_plans, :prescriptions, :billing)
         end
 end

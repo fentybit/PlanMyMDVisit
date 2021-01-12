@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-    def new 
+    def new
         @user = User.new 
     end 
 
@@ -9,7 +9,13 @@ class SessionsController < ApplicationController
             @user = User.find_or_create_from_auth_hash(auth_hash)
             session[:user_id] = @user.id
             @patient = Patient.find_or_create_by(user_id: @user.id)
-            redirect_to patient_path(@patient)
+            
+            # sign up or sign in with github
+            if @patient.healthcare_teams.empty?
+                redirect_to new_patient_path(@patient)
+            else  
+                redirect_to patient_path(@patient)
+            end 
         else  
             @user = User.find_by(username: params[:user][:username])
             
@@ -25,14 +31,14 @@ class SessionsController < ApplicationController
         end 
     end 
 
-    def destroy
+    def destroy ##
         session.delete(:user_id)
         redirect_to '/'
     end 
 
     private 
 
-        def auth_hash
+        def auth_hash ##
             request.env['omniauth.auth']
         end 
 end
