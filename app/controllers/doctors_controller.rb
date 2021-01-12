@@ -1,4 +1,6 @@
 class DoctorsController < ApplicationController 
+    before_action :set_doctor, only: [:show, :edit, :update, :destroy]
+
     def index 
         @doctors = Doctor.all
     end 
@@ -8,6 +10,15 @@ class DoctorsController < ApplicationController
     end 
 
     def create
-        
+        # need to log in as admin    
     end 
+
+    def show 
+    end 
+
+    private 
+
+        def set_doctor
+            @doctor = Doctor.find_by(id: params[:id])
+        end 
 end 
