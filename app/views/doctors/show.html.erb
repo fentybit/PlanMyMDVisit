@@ -1,0 +1,11 @@
+Fullname: <%= @doctor.fullname %><br>
+Specialty: <%= @doctor.specialty %><br>
+Gender: <%= @doctor.gender %><br>
+Hospital: <%= @doctor.hospital %><br>
+
+<% if current_user.admin == true %>
+    Address: <%= @doctor.address %><br>
+    City: <%= @doctor.city %><br>
+    State: <%= @doctor.state %><br>
+    Zipcode: <%= @doctor.zipcode %><br>
+<% end %>

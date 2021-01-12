@@ -24,6 +24,7 @@ class PatientsController < ApplicationController
 
     # patient main homepage
     def show  
+        binding.pry
     end 
 
     # admin + doctor privilege

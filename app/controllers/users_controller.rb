@@ -41,18 +41,19 @@ class UsersController < ApplicationController
         end 
     end
 
-    def destroy  ##
+    # user as patient can delete their own profile
+    def destroy
         @user.destroy
         redirect_to '/'
     end 
 
     private 
 
-        def set_user  ##
+        def set_user
             @user = User.find_by(id: params[:id])
         end 
 
-        def user_params  ##
+        def user_params
             params.require(:user).permit(:username, :email, :password, :password_confirmation, :firstname, :lastname, :admin)
         end
 end

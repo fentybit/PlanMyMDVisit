@@ -36,10 +36,12 @@ class HealthcareTeamsController < ApplicationController
     def show  ##
     end 
 
-    def edit  ##
+    # admin + doctor privilege
+    def edit
     end 
     
-    def update  ##
+    # admin + doctor privilege
+    def update
         if @healthcare_team.update(healthcareteam_params)
             redirect_to healthcare_team_path(@healthcare_team)
         else  
@@ -47,18 +49,19 @@ class HealthcareTeamsController < ApplicationController
         end 
     end
 
-    def destroy ##
+    # admin + doctor privilege
+    def destroy
         @healthcare_team.destroy
         redirect_to healthcareteams_path
     end 
 
     private 
 
-        def set_healthcareteam ##
+        def set_healthcareteam
             @healthcare_team = HealthcareTeam.find_by(id: params[:id])
         end 
 
-        def healthcareteam_params  ##
+        def healthcareteam_params
             params.require(:healthcare_team).permit(:department, :appointment, :test_result, :treatment_plans, :prescriptions, :billing)
         end
 end
