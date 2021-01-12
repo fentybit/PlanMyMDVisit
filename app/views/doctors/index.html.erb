@@ -5,6 +5,6 @@
 <% @doctors.order(specialty: :asc).each do |doctor| %>
     <div>
         <strong><%= link_to "#{ doctor.fullname }", doctor_path(doctor) %></strong>
-        <i><%= link_to "#{ doctor.specialty }", "/doctors/#{ doctor.specialty_slug }", controller: "doctors", action: "specialty" %></i>
+        <i><%= link_to "#{ doctor.specialty }", doctors_path %></i>
     </div>
 <% end %>

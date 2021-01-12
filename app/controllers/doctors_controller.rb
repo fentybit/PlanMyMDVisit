@@ -16,11 +16,6 @@ class DoctorsController < ApplicationController
     def show 
     end 
 
-    def specialty 
-        binding.pry
-        @doctors = Doctor.find_by_slug(params[:specialty])
-    end 
-
     private 
 
         def set_doctor

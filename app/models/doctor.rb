@@ -23,11 +23,11 @@ class Doctor < ApplicationRecord
         where(specialty: specialty)
     end 
 
-    def specialty_slug
-        self.specialty.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
-    end 
+    # def specialty_slug
+    #     self.specialty.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
+    # end 
 
-    def self.find_by_slug(slug)
-        self.all.find {|doctor| doctor.slug == slug}
-    end 
+    # def self.find_by_slug(slug)
+    #     self.all.find {|doctor| doctor.slug == slug}
+    # end 
 end 
