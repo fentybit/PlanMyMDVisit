@@ -7,6 +7,7 @@ Yes. I started off the project with `$ rails new plan-my-md-visit`.
   > • Include at least one `has_many`, at least one `belongs_to`, and at least two `has_many :through` relationships 
   >   
   > • Include a many-to-many relationship implemented with has_many :through associations. The join table must include a user-submittable attribute — that is to say, some attribute other than its foreign keys that can be submitted by the app's user
+
 Refer to Entity Relationship Diagram below for `belongs_to`, `has_many` and `has_many :through` relationships, along with Active Record schema.
 <div align="center">
   <img src="./PlanMyMDVisit.jpg">
@@ -113,7 +114,7 @@ end
 Standard user authentication is provided. <br>
 Password is managed by Ruby gem `bcrpyt` and Active Record macro `has_secure_password`.
 
-- [x] Your authentication system must also allow login from some other service. Facebook, Twitter, Foursquare, Github, etc...
+- [x] Your authentication system must also allow login from some other service. Facebook, Twitter, Foursquare, Github, etc... <br>
 GitHub OmniAuth is provided as a third authentication system.
 
 - [x] You must include and make use of a nested resource with the appropriate RESTful URLs.
@@ -131,6 +132,7 @@ end
   > a. Your fields should be enclosed within a fields_with_errors class
   >
   > b. Error messages describing the validation failures must be present within the view.
+<br>
 Along with `form_with` validation errors, I have provided `add_flash_types :error, :notice, :alert` in the Application Controller for customized flash messages.
 
 
