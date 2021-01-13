@@ -72,10 +72,12 @@ class HealthcareTeamsController < ApplicationController
     
     # admin + doctor privilege
     def update
-        if @healthcare_team.update(healthcareteam_params)
+        @healthcare_team.update(healthcareteam_params)
+
+        if @healthcare_team.save
             redirect_to healthcare_team_path(@healthcare_team)
         else  
-            redirect_to edit_healthcare_team_path(@healthcare_team)
+            render :edit
         end 
     end
 

@@ -30,7 +30,12 @@ class DoctorsController < ApplicationController
     # doctor privilege
     def update 
         @doctor.update(doctor_params)
-        redirect_to doctor_path(@doctor)
+
+        if @doctor.save
+            redirect_to doctor_path(@doctor)
+        else  
+            render :edit 
+        end 
     end 
     
     # doctor privilege

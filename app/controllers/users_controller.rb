@@ -41,10 +41,12 @@ class UsersController < ApplicationController
     end 
     
     def update
-        if @user.update(user_params)
+        @user.update(user_params)
+
+        if @user.save
             redirect_to user_path(@user)
         else  
-            redirect_to edit_user_path(@user)
+            render :edit
         end 
     end
 

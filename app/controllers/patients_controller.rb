@@ -36,10 +36,12 @@ class PatientsController < ApplicationController
     
     # admin + doctor privilege
     def update
-        if @patient.update(patient_params)
+        @patient.update(patient_params)
+
+        if @patient.save
             redirect_to patient_path(@patient)
         else  
-            redirect_to edit_patient_path(@patient)
+            render :edit
         end 
     end
     
