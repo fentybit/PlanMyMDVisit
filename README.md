@@ -1,46 +1,95 @@
-#### Requirements
-Using Ruby on Rails for the project
-    Include at least one has_many relationship (x has_many y; e.g. User has_many Recipes)
-    Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User)
-    Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients)
-    Include at least one many-to-many relationship (x has_many y through z, y has_many x through z; e.g. Recipe has_many Items through Ingredients, Item has_many Recipes through Ingredients)
-    The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
-    Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
-    Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
-    Include signup
-    Include login
-    Include logout
-    Include third party signup/login (how e.g. Devise/OmniAuth)
-    Include nested resource show or index (URL e.g. users/2/recipes)
-    Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
-    Include form display of validation errors (form URL e.g. /recipes/new)
+# Plan My MD Visit
 
-#### Confirm:
+<div align="center">
+  <img src="#">
+</div>
 
-    The application is pretty DRY
-    Limited logic in controllers
-    Views use helper methods if appropriate
-    Views use partials if appropriate
+<br>
 
-# README
+<strong>Domain Modeling :: Virtual Healthcare</strong><br>
+Welcome to my simplistic version of Virtual Healthcare system.<br> 
+The automation benefits patients 24/7 seeking medical assistance, improving overall patient well-being!<br>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<p><a href="#">YouTube Demo</a></p>
+<p><a href="#">DEV Blog</a></p>
 
-Things you may want to cover:
+## About
 
-* Ruby version
+<p></p>
+<p></p>
 
-* System dependencies
+## Features
 
-* Configuration
+<div align="center">
+  <img src="./PlanMyMDVisit.jpg">
+</div>
 
-* Database creation
+<br>
 
-* Database initialization
+<div align="center">
+  <img src="./PlanMyMDVisitFigma.png">
+</div>
 
-* How to run the test suite
+<br>
 
-* Services (job queues, cache servers, search engines, etc.)
+**Models** <br>
+User, Patient, Healthcare Team, Doctor<br>
 
-* Deployment instructions
+> user has_many :patients<br>
+> user has_many :doctors
+
+> patient `belongs_to` :user<br>
+> patient `has_many` :healthcare_teams<br>
+> patient `has_many` :doctors, `through:` :healthcare_teams
+
+> healthcare_team `belongs_to` :patient<br>
+> healthcare_team `belongs_to` :doctor
+
+> doctor `belongs_to` :user<br>
+> doctor `has_many` :healthcare_teams<br>
+> doctor `has_many` :patients, `through:` :healthcare_teams
+
+**Controller** <br>
+ApplicationController<br>
+UsersController<br>
+PatientsController<br>
+HealthcareTeamsController<br>
+DoctorsController<br>
+
+**User Account and Validation** <br>
+Standard Authentication: Log In, Log Out, Sign Up.<br>
+3rd Party Authentication: GitHub OmniAuth.<br>
+
+## API Database
+
+- [x] <a href="https://data.cms.gov/provider-data/dataset/mj5m-pzi6">The Centers for Medicare & Medicaid Services</a>
+
+> This file contains general information about individual eligible professionals (EPs) such as demographic information and Medicare quality program participation.
+
+## Installation
+
+```ruby
+$ git clone 👾
+$ bundle install
+$ rails db:migrate 
+$ rails db:seed
+$ rails s
+```
+
+`rails db:seed` might take about 2-3 minutes extracting from `doctors.json` file.<br>
+Open Chrome browser, and redirect to 'http://localhost:3000' to start the app.
+
+## Stack
+- [x] Active Record
+- [x] Bcrypt
+- [x] OmniAuth-GitHub
+- [x] SQLite3
+- [x] Open-URI
+- [x] Nokogiri
+- [x] JSON
+- [x] Materialize CSS
+
+## Resources
+
+- [x] <a href="https://data.cms.gov/provider-data/dataset/mj5m-pzi6">The Centers for Medicare & Medicaid Services</a>
+- [x] <a href="https://materializecss.com/">MaterializeCSS</a>
