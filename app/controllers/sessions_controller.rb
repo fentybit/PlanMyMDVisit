@@ -23,9 +23,13 @@ class SessionsController < ApplicationController
             
             if @user && @user.authenticate(params[:user][:password])##
                 session[:user_id] = @user.id 
-                current_patient
-                
-                redirect_to patient_path(current_patient)
+                binding.pry
+                if @user.admin == true 
+                    redirect_to admin_users_path 
+                else 
+                    current_patient                    
+                    redirect_to patient_path(current_patient)
+                end 
             else  
                 flash[:alert] = "Please try again."
                 render :new 

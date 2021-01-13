@@ -1,0 +1,22 @@
+<div class="nav-wrapper">
+    <a class="brand-logo">plan my MD visit</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+    <% if logged_in? && current_patient %>
+        <li><%= link_to "Home", patient_path(current_patient), class: "waves-effect waves-light btn" %></li>
+        <li><%= link_to "Care Team", patient_healthcare_teams_path(current_patient, current_patient.healthcare_teams), class: "waves-effect waves-light btn" %></li>
+        <li><%= link_to "Doctors", doctors_path, class: "waves-effect waves-light btn" %></li>
+        <li><%= link_to "Profile", user_path(current_user.id), class: "waves-effect waves-light btn" %></li>
+        <li><%= button_to "Log Out", logout_path, method: "delete", class: "waves-effect waves-light btn" %></li>
+
+    <% elsif logged_in? && current_user.admin == true %>
+        <li><%= link_to "Users", admin_users_path(@users), class: "waves-effect waves-light btn" %></li>
+        
+    <% else %>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Login", signin_path %></li>
+        <li><%= link_to "Sign Up", new_user_path %></li>
+        <li><%= link_to "Sign Up or Login with GitHub", "/auth/github" %></li>
+    <% end %>
+    </ul>
+</div>

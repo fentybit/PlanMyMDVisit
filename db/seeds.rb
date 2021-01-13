@@ -21,7 +21,7 @@ primary_user.patients.create(
     medications: "Ibuprofen, 600 mg; thrice a day, after meal. Noproxen Sodium, 500 mg; Once A Day.")
 
 # Set up first User Admin 
-admin = User.create(firstname: "Shelby", lastname: "Hall", username: "admin", email: "shelby@me.com", password: "admin", password_confirmation: "admin")
+admin = User.create(firstname: "Shelby", lastname: "Hall", username: "admin", email: "shelby@me.com", password: "admin", password_confirmation: "admin", admin: true)
 
 # Instantiate Doctors from CMS JSON Data
 JSON.parse(File.read("doctors.json")).each do |doctor|
