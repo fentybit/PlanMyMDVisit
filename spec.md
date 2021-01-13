@@ -151,6 +151,7 @@ module HealthcareTeamsHelper
 end
 ```
 <p>Validation errors are encapsulated in one view, and rendered partially on other views when necessary.</p>
+
 ```ruby 
 <%= render partial: '/errors', locals: { record: @patient } %>
 ```
