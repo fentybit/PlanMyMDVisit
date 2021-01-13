@@ -8,7 +8,9 @@ Yes. I started off the project with `$ rails new plan-my-md-visit`.
   >   
   > • Include a many-to-many relationship implemented with has_many :through associations. The join table must include a user-submittable attribute — that is to say, some attribute other than its foreign keys that can be submitted by the app's user
 Refer to Entity Relationship Diagram below for `belongs_to`, `has_many` and `has_many :through` relationships, along with Active Record schema.
-<img src="./PlanMyMDVisit.jpg" class="center">
+<div align="center">
+  <img src="./PlanMyMDVisit.jpg">
+</div>
 
 ```ruby
 ActiveRecord::Schema.define(version: 2021_01_04_042023) do
