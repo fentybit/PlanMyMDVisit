@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # Omniauth GitHub route
   match '/auth/github/callback', to: 'sessions#create', via: [:get, :post]
 
-  # Only Admin can see Users Index
+  # Only Admin can see Users I-ndex
   resources :users, except: [:index]  
    
   # Patients access to web application
@@ -24,10 +24,13 @@ Rails.application.routes.draw do
   # Patients can only view Doctors' Index and Show Page
   resources :doctors, only: [:index, :show] 
 
-  resources :admin do 
+  ## NEED TO WORK
+  namespace :admin do 
     resources :users
     resources :patients
     resources :doctors 
     resources :healthcare_teams
   end 
+
+  # /admin/users/:
 end

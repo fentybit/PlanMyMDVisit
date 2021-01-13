@@ -10,7 +10,6 @@ class User < ApplicationRecord
     validates :email, presence: true, uniqueness: true
     validates :firstname, presence: true, format: { without: /[0-9]/, message: "Numbers are not allowed." }
     validates :lastname, presence: true, format: { without: /[0-9]/, message: "Numbers are not allowed." }
-    # validates :phone_number, length: { is: 10 }
 
     def fullname 
         self.firstname + " " + self.lastname
