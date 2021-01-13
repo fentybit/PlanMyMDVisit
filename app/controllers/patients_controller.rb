@@ -16,7 +16,7 @@ class PatientsController < ApplicationController
         @patient.healthcare_teams.build(doctor_id: params[:patient][:doctor_id], appointment: "2020-12-31 13:05:21", test_result: "Perfectly healthy", treatment_plans: "Maintain current BMI", prescriptions: "None", billing: 0)
         
         if @patient.save 
-            redirect_to patient_path(@patient)
+            redirect_to homepage_path
         else  
             render :new
         end 

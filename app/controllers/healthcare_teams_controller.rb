@@ -28,7 +28,7 @@ class HealthcareTeamsController < ApplicationController
             if @healthcare_team.save 
                 redirect_to patient_healthcare_team_path(current_patient, @healthcare_team)
             else  
-                redirect_to patient_path(current_patient)
+                redirect_to homepage_path
             end 
         end 
     end 

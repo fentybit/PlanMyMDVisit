@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   # Omniauth GitHub route
   match '/auth/github/callback', to: 'sessions#create', via: [:get, :post]
 
+  # Only Admin can see Users Index
   resources :users, except: [:index]  
    
+  # Patients access to web application
   resources :patients, only: [:new, :create] do
     resources :healthcare_teams, only: [:index, :new, :create, :show]
   end
@@ -18,11 +20,12 @@ Rails.application.routes.draw do
   # Patient Main Page 
   get '/homepage', to: 'application#homepage'
 
-  # Customized for doctors specialty filter
+  # Customized url to filter Doctors Specialty
   get '/select_specialty', to: 'healthcare_teams#select_specialty'
   post '/patients/:patient_id/healthcare_teams/new', to: 'healthcare_teams#new'
 
-  resources :doctors, only: [:index] 
+  # Patients can only view Doctors' Index and Show Page
+  resources :doctors, only: [:index, :show] 
 
   resources :admin do 
     resources :users

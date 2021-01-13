@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    before_action :logged_in?, only: [:destroy]
+    skip_before_action :logged_in?, only: [:new, :create]
 
     def new
         @user = User.new 
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
                 redirect_to new_patient_path(@patient)
             # login with github
             else  
-                redirect_to patient_path(@patient)
+                redirect_to homepage_path
             end 
         else 
             @user = User.find_by(username: params[:user][:username])
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
                 session[:user_id] = @user.id 
                 current_patient
                 
-                redirect_to patient_path(current_patient)
+                redirect_to homepage_path
             else  
                 flash[:alert] = "Please try again."
                 render :new 
