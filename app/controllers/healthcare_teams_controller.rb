@@ -1,7 +1,7 @@
 class HealthcareTeamsController < ApplicationController
     before_action :set_healthcareteam, only: [:show, :edit, :update, :destroy]
 
-    def index # admin privilege  ##
+    def index 
         @healthcare_teams = HealthcareTeam.all
     end 
 

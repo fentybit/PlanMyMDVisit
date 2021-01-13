@@ -11,20 +11,23 @@ Rails.application.routes.draw do
 
   resources :users, except: [:index]  
    
-  resources :patients, only: [:new, :create, :show, :edit, :update] do
+  resources :patients, only: [:new, :create] do
     resources :healthcare_teams, only: [:index, :new, :create, :show]
   end
 
+  # Patient Main Page 
+  get '/homepage', to: 'application#homepage'
+
+  # Customized for doctors specialty filter
   get '/select_specialty', to: 'healthcare_teams#select_specialty'
   post '/patients/:patient_id/healthcare_teams/new', to: 'healthcare_teams#new'
 
-  # resources :patients, except: [:new, :create] 
-  resources :doctors # '/users/:user_id/doctors/new'
-  
-  # get '/select_doctor', to: 'doctors#select_doctor'
-
+  resources :doctors, only: [:index] 
 
   resources :admin do 
-    resources :users, only: [:index, :destroy]
+    resources :users
+    resources :patients
+    resources :doctors 
+    resources :healthcare_teams
   end 
 end

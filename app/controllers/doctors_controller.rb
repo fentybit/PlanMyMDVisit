@@ -9,21 +9,29 @@ class DoctorsController < ApplicationController
         end 
     end 
 
-    # admin + doctor privilege
+    # doctor privilege
     def new 
         @doctor = Doctor.new 
     end 
 
-    # admin + doctor privilege
+    # doctor privilege
     def create
     end 
 
-    # admin + doctor privilege
+    # doctor privilege
     # patient can only view limited information
     def show
     end 
     
-    # admin + doctor privilege
+    # doctor privilege
+    def edit 
+    end 
+    
+    # doctor privilege
+    def update 
+    end 
+    
+    # doctor privilege
     def destroy 
         @doctor.destroy
         redirect_to doctors_path

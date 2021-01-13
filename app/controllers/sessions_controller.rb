@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    before_action :logged_in?, only: [:destroy]
 
     def new
         @user = User.new 
@@ -17,7 +18,7 @@ class SessionsController < ApplicationController
             else  
                 redirect_to patient_path(@patient)
             end 
-        else  ##
+        else 
             @user = User.find_by(username: params[:user][:username])
             
             if @user && @user.authenticate(params[:user][:password])##
@@ -26,7 +27,7 @@ class SessionsController < ApplicationController
                 
                 redirect_to patient_path(current_patient)
             else  
-                flash[:alert] = "Please try again."##
+                flash[:alert] = "Please try again."
                 render :new 
             end 
         end 

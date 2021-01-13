@@ -1,6 +1,6 @@
 class PatientsController < ApplicationController
     before_action :set_patient, only: [:show, :edit, :update, :destroy]
-
+ 
     # admin + doctor privilege
     def index  
         @patients = Patient.all
@@ -24,7 +24,6 @@ class PatientsController < ApplicationController
 
     # patient main homepage
     def show  
-        binding.pry
     end 
 
     # admin + doctor privilege
