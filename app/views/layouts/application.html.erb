@@ -14,7 +14,7 @@
       <a class="brand-logo">plan my MD visit</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if logged_in? && current_patient %>
-          <li><%= link_to "Home", homepage_path, class: "waves-effect waves-light btn" %></li>
+          <li><%= link_to "Home", patient_path(current_patient), class: "waves-effect waves-light btn" %></li>
           <li><%= link_to "Care Team", patient_healthcare_teams_path(current_patient, current_patient.healthcare_teams), class: "waves-effect waves-light btn" %></li>
           <li><%= link_to "Doctors", doctors_path, class: "waves-effect waves-light btn" %></li>
           <li><%= link_to "Profile", user_path(current_user.id), class: "waves-effect waves-light btn" %></li>

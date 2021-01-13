@@ -1,6 +1,6 @@
-<% current_patient.healthcare_teams.each do |healthcare_team| %>
+<% @healthcare_teams.each do |healthcare_team| %>
     <div>
-        <h4><%= healthcare_team.doctor_fullname %></h4>
+        <h4><%= link_to "#{healthcare_team.doctor_fullname}", patient_healthcare_team_path(@patient, healthcare_team) %></h4>
         <%= healthcare_team.doctor_specialty %>
     </div>
 <% end %>

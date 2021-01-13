@@ -1,5 +1,9 @@
 <h4><%= @patient.fullname %></h4>
 
+<% if current_user.admin == false %>
+    <h3><%= link_to "Schedule an Appointment", select_specialty_path %></h3>
+<% end %>
+
 <% @patient.doctors.each do |doctor| %>
     <div>
         <strong><%= doctor.fullname %></strong>

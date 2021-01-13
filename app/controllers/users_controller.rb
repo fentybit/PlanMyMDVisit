@@ -26,8 +26,11 @@ class UsersController < ApplicationController
         end 
     end 
 
-    # admin + doctor privilege
-    def show  
+    def show 
+        if @user != current_user 
+            flash[:alert] = "Error URL path."
+            redirect_to user_path(current_user)
+        end 
     end 
 
     def edit
@@ -44,6 +47,7 @@ class UsersController < ApplicationController
     # user as patient can delete their own profile
     def destroy
         @user.destroy
+        flash[:notice] = "User deleted."
         redirect_to '/'
     end 
 

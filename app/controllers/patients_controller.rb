@@ -16,7 +16,7 @@ class PatientsController < ApplicationController
         @patient.healthcare_teams.build(doctor_id: params[:patient][:doctor_id], appointment: "2020-12-31 13:05:21", test_result: "Perfectly healthy", treatment_plans: "Maintain current BMI", prescriptions: "None", billing: 0)
         
         if @patient.save 
-            redirect_to homepage_path
+            redirect_to patient_path(current_patient)
         else  
             render :new
         end 
@@ -24,6 +24,10 @@ class PatientsController < ApplicationController
 
     # patient main homepage
     def show  
+        if @patient != current_patient
+            flash[:alert] = "Error URL path."
+            redirect_to patient_path(current_patient)
+        end 
     end 
 
     # admin + doctor privilege
@@ -42,6 +46,7 @@ class PatientsController < ApplicationController
     # admin + doctor privilege
     def destroy 
         @patient.destroy
+        flash[:notice] = "Patient deleted."
         redirect_to patients_path
     end 
 

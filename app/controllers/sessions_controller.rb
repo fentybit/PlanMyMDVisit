@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
                 redirect_to new_patient_path(@patient)
             # login with github
             else  
-                redirect_to homepage_path
+                redirect_to patient_path(current_patient)
             end 
         else 
             @user = User.find_by(username: params[:user][:username])
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
                 session[:user_id] = @user.id 
                 current_patient
                 
-                redirect_to homepage_path
+                redirect_to patient_path(current_patient)
             else  
                 flash[:alert] = "Please try again."
                 render :new 
@@ -36,6 +36,7 @@ class SessionsController < ApplicationController
     # user log out
     def destroy 
         session.delete(:user_id)
+        flash[:notice] = "Logging out."
         redirect_to '/'
     end 
 

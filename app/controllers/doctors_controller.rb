@@ -34,6 +34,7 @@ class DoctorsController < ApplicationController
     # doctor privilege
     def destroy 
         @doctor.destroy
+        flash[:notice] = "Doctor deleted."
         redirect_to doctors_path
     end 
 

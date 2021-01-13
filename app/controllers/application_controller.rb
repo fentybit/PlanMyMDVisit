@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
     # Prevent CSRF attacks by raising an exception.
     # For APIs, you may want to use :null_session instead.
     protect_from_forgery with: :exception
-    add_flash_types :error
+    add_flash_types :error, :notice, :alert
 
     before_action :logged_in?
     skip_before_action :logged_in?, only: [:home]
@@ -10,11 +10,8 @@ class ApplicationController < ActionController::Base
 
     def home 
         if logged_in?
-            redirect_to homepage_path
+            redirect_to patient_path(current_patient)
         end 
-    end 
-
-    def homepage
     end 
 
     def logged_in? 

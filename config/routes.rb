@@ -13,12 +13,9 @@ Rails.application.routes.draw do
   resources :users, except: [:index]  
    
   # Patients access to web application
-  resources :patients, only: [:new, :create] do
+  resources :patients, only: [:new, :create, :show] do
     resources :healthcare_teams, only: [:index, :new, :create, :show]
   end
-
-  # Patient Main Page 
-  get '/homepage', to: 'application#homepage'
 
   # Customized url to filter Doctors Specialty
   get '/select_specialty', to: 'healthcare_teams#select_specialty'

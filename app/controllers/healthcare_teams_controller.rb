@@ -1,12 +1,22 @@
 class HealthcareTeamsController < ApplicationController
     before_action :set_healthcareteam, only: [:show, :edit, :update, :destroy]
 
-    def index 
-        @healthcare_teams = HealthcareTeam.all
+    def index
+        if params[:patient_id]
+            @patient = Patient.find_by(id: params[:patient_id])
+            if @patient.nil? || @patient != current_patient
+                flash[:alert] = "Error URL path."
+                redirect_to patient_path(current_patient)
+            else  
+                @healthcare_teams = @patient.healthcare_teams
+            end 
+        else
+            @healthcare_teams = HealthcareTeam.all
+        end 
     end 
 
     # patients, doctors and admin
-    def new  ##
+    def new 
         @healthcare_team = HealthcareTeam.new
 
         if params['specialty'] == ""
@@ -17,7 +27,7 @@ class HealthcareTeamsController < ApplicationController
         end
     end 
     
-    def create  ##
+    def create 
         if params["healthcare_team"]["doctor_id"] == "" || params["healthcare_team"]["appointment"] == ""
             flash[:error] = "Please select doctor and appointment time."
             redirect_to select_specialty_path 
@@ -28,12 +38,28 @@ class HealthcareTeamsController < ApplicationController
             if @healthcare_team.save 
                 redirect_to patient_healthcare_team_path(current_patient, @healthcare_team)
             else  
-                redirect_to homepage_path
+                redirect_to patient_path(current_patient)
             end 
         end 
     end 
 
-    def show  ##
+    def show 
+        if params[:patient_id]
+            @patient = Patient.find_by(id: params[:patient_id])
+            if @patient.nil? || @patient != current_patient
+                flash[:alert] = "Error URL path."
+                redirect_to patient_path(current_patient)
+            else 
+                @healthcare_team = @patient.healthcare_teams.find_by(id: params[:id])
+
+                if @healthcare_team.nil?
+                    flash[:alert] = "Care Team not found."
+                    redirect_to patient_healthcare_teams_path(@patient)
+                end 
+            end 
+        else  
+            @healthcare_team = HealthcareTeam.find(params[:id])
+        end 
     end 
 
     # admin + doctor privilege
@@ -52,6 +78,7 @@ class HealthcareTeamsController < ApplicationController
     # admin + doctor privilege
     def destroy
         @healthcare_team.destroy
+        flash[:notice] = "Care Team deleted."
         redirect_to healthcareteams_path
     end 
 
@@ -64,4 +91,4 @@ class HealthcareTeamsController < ApplicationController
         def healthcareteam_params
             params.require(:healthcare_team).permit(:department, :appointment, :test_result, :treatment_plans, :prescriptions, :billing)
         end
-end
+end 
