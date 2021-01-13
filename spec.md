@@ -133,9 +133,8 @@ end
   > a. Your fields should be enclosed within a fields_with_errors class
   >
   > b. Error messages describing the validation failures must be present within the view.
-<br>
-Along with `form_with` validation errors, I have provided `add_flash_types :error, :notice, :alert` in the Application Controller for customized flash messages.
 
+Along with `form_with` validation errors, I have provided `add_flash_types :error, :notice, :alert` in the Application Controller for customized flash messages.
 
 - [x] Your application must be, within reason, a DRY (Do-Not-Repeat-Yourself) rails app. 
   > • Logic present in your controllers should be encapsulated as methods in your models.  
