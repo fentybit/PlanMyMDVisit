@@ -1,14 +1,14 @@
 ## Requirements
 
 - [x] Use the Ruby on Rails framework. <br>
-<p>Yes. I started off the project with `$ rails new plan-my-md-visit`.</p>
+Yes. I started off the project with `$ rails new plan-my-md-visit`.
 
 - [x] Your models must:  
   > • Include at least one `has_many`, at least one `belongs_to`, and at least two `has_many :through` relationships 
   >   
   > • Include a many-to-many relationship implemented with has_many :through associations. The join table must include a user-submittable attribute — that is to say, some attribute other than its foreign keys that can be submitted by the app's user
 
-<p>Refer to Entity Relationship Diagram below for `belongs_to`, `has_many` and `has_many :through` relationships, along with Active Record schema.</p>
+Refer to Entity Relationship Diagram below for `belongs_to`, `has_many` and `has_many :through` relationships, along with Active Record schema.
 
 <div align="center">
   <img src="./PlanMyMDVisit.jpg">
@@ -112,11 +112,11 @@ end
 ```
 
 - [x] Your application must provide standard user authentication, including signup, login, logout, and passwords. <br>
-<p>Standard user authentication is provided. <br>
-Password is managed by Ruby gem `bcrpyt` and Active Record macro `has_secure_password`.</p>
+Standard user authentication is provided. <br>
+Password is managed by Ruby gem `bcrpyt` and Active Record macro `has_secure_password`. <br>
 
-- [x] Your authentication system must also allow login from some other service. Facebook, Twitter, Foursquare, Github, etc...
-<p>GitHub OmniAuth is provided as a third authentication system.</p>
+- [x] Your authentication system must also allow login from some other service. Facebook, Twitter, Foursquare, Github, etc... <br>
+GitHub OmniAuth is provided as a third authentication system.
 
 - [x] You must include and make use of a nested resource with the appropriate RESTful URLs.
   > • You must include a nested `new` route with form that relates to the parent resource  
@@ -133,7 +133,8 @@ end
   > a. Your fields should be enclosed within a fields_with_errors class
   >
   > b. Error messages describing the validation failures must be present within the view.
-<p>Along with `form_with` validation errors, I have provided `add_flash_types :error, :notice, :alert` in the Application Controller for customized flash messages.</p>
+<br>
+Along with `form_with` validation errors, I have provided `add_flash_types :error, :notice, :alert` in the Application Controller for customized flash messages.
 
 
 - [x] Your application must be, within reason, a DRY (Do-Not-Repeat-Yourself) rails app. 
@@ -150,11 +151,11 @@ module HealthcareTeamsHelper
     end 
 end
 ```
-<p>Validation errors are encapsulated in one view, and rendered partially on other views when necessary.</p>
+Validation errors are encapsulated in one view, and rendered partially on other views when necessary.
 
 ```ruby 
 <%= render partial: '/errors', locals: { record: @patient } %>
 ```
 
-- [x] **Do not** use scaffolding to build your project. Your goal here is to learn. Scaffold is a way to get up and running quickly, but learning a lot is not one of the benefits of scaffolding.
-<p>Scaffold Generator was not used.</p>
+- [x] **Do not** use scaffolding to build your project. Your goal here is to learn. Scaffold is a way to get up and running quickly, but learning a lot is not one of the benefits of scaffolding.<br>
+Scaffold Generator was not used.
