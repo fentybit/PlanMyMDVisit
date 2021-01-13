@@ -18,10 +18,14 @@ class HealthcareTeamsController < ApplicationController
     # patients, doctors and admin
     def new 
         @healthcare_team = HealthcareTeam.new
-
+        @patient = Patient.find_by(id: params[:patient_id])
+        
         if params['specialty'] == ""
             flash[:error] = "You must select a specialty."
-            redirect_to '/select_specialty'
+            redirect_to select_specialty_path
+        elsif @patient.nil? || @patient != current_patient
+            flash[:alert] = "Error URL path."
+            redirect_to select_specialty_path
         else   
             @doctors = Doctor.by_specialty(params['specialty'])
         end

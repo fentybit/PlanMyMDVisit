@@ -34,6 +34,10 @@ class UsersController < ApplicationController
     end 
 
     def edit
+        if @user != current_user 
+            flash[:alert] = "Error URL path."
+            redirect_to edit_user_path(current_user)
+        end 
     end 
     
     def update

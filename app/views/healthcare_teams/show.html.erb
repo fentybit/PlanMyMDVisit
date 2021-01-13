@@ -9,22 +9,22 @@
 <h4><%= @healthcare_team.doctor_fullname %></h4>
 <h4><%= @healthcare_team.doctor_hospital %></h4>
 
-<% if !@healthcare_team.test_result.nil? %>
+<% if @healthcare_team.test_result %>
     <h3>Test Result:</h3>
     <h4><%= @healthcare_team.test_result %></h4>
 <% end %>
 
-<% if !@healthcare_team.treatment_plans.nil? %>
+<% if @healthcare_team.treatment_plans %>
     <h3>Treatment Plans:</h3>
     <h4><%= @healthcare_team.treatment_plans %></h4>
 <% end %>
 
-<% if !@healthcare_team.prescriptions.nil? %>
+<% if @healthcare_team.prescriptions %>
     <h3>Prescriptions:</h3>
     <h4><%= @healthcare_team.prescriptions %></h4>
 <% end %>
 
-<% if !@healthcare_team.billing.nil? %>
+<% if @healthcare_team.billing %>
     <h3>Amount Due:</h3>
     <h4><%= @healthcare_team.billing %></h4>
 <% end %>

@@ -29,6 +29,8 @@ class DoctorsController < ApplicationController
     
     # doctor privilege
     def update 
+        @doctor.update(doctor_params)
+        redirect_to doctor_path(@doctor)
     end 
     
     # doctor privilege
@@ -42,5 +44,8 @@ class DoctorsController < ApplicationController
 
         def set_doctor
             @doctor = Doctor.find_by(id: params[:id])
+        end 
+
+        def doctor_params 
         end 
 end 
