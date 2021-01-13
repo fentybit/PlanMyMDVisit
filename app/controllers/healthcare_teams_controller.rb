@@ -15,7 +15,7 @@ class HealthcareTeamsController < ApplicationController
         end 
     end 
 
-    # patients, doctors and admin
+    # patient to initiate and admin to edit healthcare_team attributes
     def new 
         @healthcare_team = HealthcareTeam.new
         @patient = Patient.find_by(id: params[:patient_id])
@@ -23,7 +23,7 @@ class HealthcareTeamsController < ApplicationController
         if params['specialty'] == ""
             flash[:error] = "You must select a specialty."
             redirect_to select_specialty_path
-        elsif @patient.nil? || @patient != current_patient
+        elsif @patient.nil? || @patient != current_patient  
             flash[:alert] = "Error URL path."
             redirect_to select_specialty_path
         else   
@@ -66,11 +66,11 @@ class HealthcareTeamsController < ApplicationController
         end 
     end 
 
-    # admin + doctor privilege
+    # admin privilege
     def edit
     end 
     
-    # admin + doctor privilege
+    # admin privilege
     def update
         @healthcare_team.update(healthcareteam_params)
 
@@ -81,7 +81,7 @@ class HealthcareTeamsController < ApplicationController
         end 
     end
 
-    # admin + doctor privilege
+    # admin privilege
     def destroy
         @healthcare_team.destroy
         flash[:notice] = "Care Team deleted."

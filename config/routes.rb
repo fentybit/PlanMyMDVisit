@@ -24,13 +24,8 @@ Rails.application.routes.draw do
   # Patients can only view Doctors' Index and Show Page
   resources :doctors, only: [:index, :show] 
 
-  ## NEED TO WORK
+  # Admin privileges
   namespace :admin do 
-    resources :users
-    resources :patients
-    resources :doctors 
-    resources :healthcare_teams
+    resources :users, only: [:index]
   end 
-
-  # /admin/users/:
 end

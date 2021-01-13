@@ -9,25 +9,25 @@ class DoctorsController < ApplicationController
         end 
     end 
 
-    # doctor privilege
+    # admin privilege
     def new 
         @doctor = Doctor.new 
     end 
 
-    # doctor privilege
+    # admin privilege
     def create
     end 
 
-    # doctor privilege
+    # admin privilege
     # patient can only view limited information
     def show
     end 
     
-    # doctor privilege
+    # admin privilege
     def edit 
     end 
     
-    # doctor privilege
+    # admin privilege
     def update 
         @doctor.update(doctor_params)
 
@@ -38,7 +38,7 @@ class DoctorsController < ApplicationController
         end 
     end 
     
-    # doctor privilege
+    # admin privilege
     def destroy 
         @doctor.destroy
         flash[:notice] = "Doctor deleted."

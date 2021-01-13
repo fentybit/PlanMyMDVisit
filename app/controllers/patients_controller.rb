@@ -1,10 +1,10 @@
 class PatientsController < ApplicationController
     before_action :set_patient, only: [:show, :edit, :update, :destroy]
  
-    # admin + doctor privilege
-    def index  
-        @patients = Patient.all
-    end 
+    # admin privilege
+    # def index  
+    #     @patients = Patient.all
+    # end 
 
     def new
         @patient = Patient.new
@@ -30,11 +30,11 @@ class PatientsController < ApplicationController
         end 
     end 
 
-    # admin + doctor privilege
+    # admin privilege
     def edit
     end 
     
-    # admin + doctor privilege
+    # admin privilege
     def update
         @patient.update(patient_params)
 
@@ -45,7 +45,7 @@ class PatientsController < ApplicationController
         end 
     end
     
-    # admin + doctor privilege
+    # admin privilege
     def destroy 
         @patient.destroy
         flash[:notice] = "Patient deleted."
