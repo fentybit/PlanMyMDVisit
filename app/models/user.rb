@@ -29,4 +29,12 @@ class User < ApplicationRecord
             @user = User.create(firstname: auth_hash["info"].name.split[0], lastname: auth_hash["info"].name.split[1], username: auth_hash.uid, email: auth_hash["info"].name.split.join.downcase + "@me.com", password: SecureRandom.hex)
         end 
     end 
+
+    def patients 
+        User.joins(:patient).where("user_id")
+    end 
+
+    def doctors 
+        User.joins(:doctor).where("user_id")
+    end 
 end 

@@ -12,3 +12,15 @@
 <% @patient.medical_record %>
 <% @patient.test_results %>
 <% @patient.medications %>
+
+
+
+<%= month_calendar(events: @patient.healthcare_teams) do |date, appointments| %>
+  <%= date.day %>
+
+  <% appointments.each do |appointment| %>
+    <div>
+      <%= appointment.doctor.fullname %>
+    </div>
+  <% end %>
+<% end %>
