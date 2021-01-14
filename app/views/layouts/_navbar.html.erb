@@ -10,7 +10,7 @@
         <li><%= button_to "Log Out", logout_path, method: "delete", class: "waves-effect waves-light btn" %></li>
 
     <% elsif logged_in? && current_user.admin == true %>
-        <li><%= link_to "Users", admin_users_path(@users), class: "waves-effect waves-light btn" %></li>
+        <li><%= link_to "Home", admin_users_path, class: "waves-effect waves-light btn" %></li>
         
     <% else %>
         <li><%= link_to "Home", root_path %></li>

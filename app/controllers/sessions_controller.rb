@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
             
             if @user && @user.authenticate(params[:user][:password])##
                 session[:user_id] = @user.id 
-                binding.pry
+
                 if @user.admin == true 
                     redirect_to admin_users_path 
                 else 

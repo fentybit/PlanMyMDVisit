@@ -2,20 +2,18 @@ class Admin::UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     def index 
-        @users = User.all 
-        @patients = Patient.all
-        @doctors = Doctor.all 
+        if !params[:users_type].blank?
+            if params[:users_type] == "Patients"
+                @users = Patient.all # need to sort alphabetically
+            elsif params[:users_type] == "Doctors"
+                @users = Doctor.all # need to sort alphabetically
+            end 
+        else  
+            @users = User.all.order(firstname: :asc)
+        end 
     end 
 
-    
+    def show 
 
-    private 
-
-        def set_user
-            @user = User.find_by(id: params[:id])
-        end 
-
-        def user_params
-            params.require(:user).permit(:username, :email, :password, :password_confirmation, :firstname, :lastname, :admin)
-        end
+    end 
 end
