@@ -10,8 +10,7 @@
 
     <div>
         <%= f.label :appointment, "Appointment schedule preference" %>
-        <%= f.date_field :appointment, min: DateTime.now %>
-        <%= f.time_field :appointment, min: "T08:00:00", max: "T17:00:00" %>
+        <%= f.datetime_field :appointment, min: DateTime.now.beginning_of_day %>
     </div>
 
     <div>

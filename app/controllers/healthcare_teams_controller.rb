@@ -38,7 +38,7 @@ class HealthcareTeamsController < ApplicationController
         else  
             @healthcare_team = current_patient.healthcare_teams.build(healthcareteam_params)
             @healthcare_team.doctor = Doctor.find_by(id: params["healthcare_team"]["doctor_id"])
-
+            binding.pry
             if @healthcare_team.save 
                 redirect_to patient_healthcare_team_path(current_patient, @healthcare_team)
             else  

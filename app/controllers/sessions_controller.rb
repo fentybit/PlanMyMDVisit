@@ -9,11 +9,11 @@ class SessionsController < ApplicationController
         if auth_hash != nil 
             @user = User.find_or_create_from_auth_hash(auth_hash)
             session[:user_id] = @user.id
-            @patient = Patient.find_or_create_by(user_id: @user.id)
-            
+            @current_patient = Patient.find_or_create_by(user_id: session[:user_id])
             # sign up with github
-            if @patient.healthcare_teams.empty?
-                redirect_to new_patient_path(@patient)
+            
+            if current_patient.healthcare_teams.empty?
+                redirect_to new_patient_path
             # login with github
             else  
                 redirect_to patient_path(current_patient)

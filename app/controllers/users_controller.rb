@@ -53,7 +53,9 @@ class UsersController < ApplicationController
     # user as patient can delete their own profile
     def destroy
         @user.destroy
-        flash[:notice] = "User deleted."
+        current_patient.destroy
+        session.clear
+        flash[:notice] = "User deleted, and logging out."
         redirect_to '/'
     end 
 

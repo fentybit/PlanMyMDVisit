@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # Omniauth GitHub route
   match '/auth/github/callback', to: 'sessions#create', via: [:get, :post]
 
-  # Only Admin can see Users I-ndex
+  # Only Admin can see Users Index
   resources :users, except: [:index]  
    
   # Patients access to web application

@@ -11,14 +11,23 @@ class PatientsController < ApplicationController
     end 
 
     def create
-        @patient = Patient.new(patient_params)
+        if current_patient
+            current_patient.healthcare_teams.build(doctor_id: params[:patient][:doctor_id], appointment: "2020-12-31 13:05:21", test_result: "Perfectly healthy", treatment_plans: "Maintain current BMI", prescriptions: "None", billing: 0)
 
-        @patient.healthcare_teams.build(doctor_id: params[:patient][:doctor_id], appointment: "2020-12-31 13:05:21", test_result: "Perfectly healthy", treatment_plans: "Maintain current BMI", prescriptions: "None", billing: 0)
+            if current_patient.save
+                redirect_to patient_path(current_patient)
+            else 
+                render :new
+            end 
+        else 
+            @patient = Patient.new(patient_params)
+            @patient.healthcare_teams.build(doctor_id: params[:patient][:doctor_id], appointment: "2020-12-31 13:05:21", test_result: "Perfectly healthy", treatment_plans: "Maintain current BMI", prescriptions: "None", billing: 0)
         
-        if @patient.save 
-            redirect_to patient_path(current_patient)
-        else  
-            render :new
+            if @patient.save 
+                redirect_to patient_path(@patient)
+            else  
+                render :new
+            end 
         end 
     end 
 

@@ -37,6 +37,9 @@ gem 'nokogiri'
 gem 'json'
 gem 'pry'
 
+# Simple Calendar Ruby Gem
+gem "simple_calendar", "~> 2.0"
+
 # Materialize SASS
 gem 'materialize-sass', '~> 1.0.0'
 
