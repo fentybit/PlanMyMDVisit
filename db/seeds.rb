@@ -15,7 +15,7 @@ HealthcareTeam.destroy_all
 
 # Set up first User Patient
 primary_user = User.create(firstname: "Fenty", lastname: "Hall", username: "fenty", email: "fenty@me.com", password: "fenty", password_confirmation: "fenty")
-primary_user.patients.create(
+primary_user.create_patient(
     medical_record: "Patient has a mild osteoarthritis. For the sake of the patient's wellbeing, it is advised that the patient must refrain from carrying heavy materials and must allocate up to 30 minutes of exercise daily.", 
     test_results: "20210107 - X-Ray results suggest mild osteoarthritis.", 
     medications: "Ibuprofen, 600 mg; thrice a day, after meal. Noproxen Sodium, 500 mg; Once A Day.")
@@ -27,7 +27,7 @@ admin = User.create(firstname: "Shelby", lastname: "Hall", username: "admin", em
 JSON.parse(File.read("doctors.json")).each do |doctor|
     user = User.create(firstname: doctor["firstname"], lastname: doctor["lastname"], username: doctor["username"], email: doctor["email"], password: doctor["password"], admin: true)
 
-    user.doctors.build(gender: doctor["gender"], specialty: doctor["specialty"], hospital: doctor["hospital"], address: doctor["address"], city: doctor["city"], state: doctor["state"], zipcode: doctor["zipcode"])
+    user.build_doctor(gender: doctor["gender"], specialty: doctor["specialty"], hospital: doctor["hospital"], address: doctor["address"], city: doctor["city"], state: doctor["state"], zipcode: doctor["zipcode"])
 
     user.save 
 end 

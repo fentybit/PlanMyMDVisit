@@ -27,5 +27,7 @@ Rails.application.routes.draw do
   # Admin privileges
   namespace :admin do 
     resources :users, only: [:index, :show]
+    resources :patients, only: [:index, :show]
+    resources :doctors, only: [:index, :show]
   end 
 end

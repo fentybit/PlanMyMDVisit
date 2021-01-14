@@ -1,8 +1,8 @@
 class User < ApplicationRecord 
     has_secure_password
     
-    has_many :patients
-    has_many :doctors
+    has_one :patient
+    has_one :doctor
 
     before_validation :capitalized_name
 
