@@ -14,6 +14,7 @@ class Admin::UsersController < ApplicationController
     end 
 
     def show 
+        binding.pry
         @user = User.find_by(id: params[:id])
         @patient = Patient.find_by(user_id: params[:id])
         @doctor = Doctor.find_by(user_id: params[:id])
