@@ -9,7 +9,11 @@ class ApplicationController < ActionController::Base
     helper_method :current_user, :current_patient, :logged_in?
 
     def home 
-        if logged_in? 
+        if logged_in?
+            if current_user.admin == true 
+                redirect_to admin_users_path 
+            end 
+            
             redirect_to patient_path(current_patient)
         end 
     end 
@@ -25,6 +29,6 @@ class ApplicationController < ActionController::Base
         end 
 
         def current_patient 
-            @patient = Patient.find_by(user_id: current_user.id)
+            @patient = Patient.find_by(user_id: session[:user_id])
         end 
 end

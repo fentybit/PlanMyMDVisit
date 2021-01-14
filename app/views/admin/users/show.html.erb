@@ -1,0 +1,31 @@
+Fullname: <%= @user.fullname %><br>
+Username: <%= @user.username %><br>
+Email: <%= @user.email %><br>
+Admin: <%= @user.admin %><br>
+
+<% if @patient %>
+    <h4>Patient Information:</h4>
+    Medical Records: <%= @patient.medical_record %><br>
+    Test Results: <%= @patient.test_results %><br>
+    Medications: <%= @patient.medications %><br>
+    
+    <h4>Care Teams:</h4>
+    <% @patient.healthcare_teams.each do |care_team| %>
+        <%= care_team.doctor.specialty %>
+    <% end %>
+
+<% elsif @doctor %>
+    <h4>Doctor Information:</h4>
+    Gender: <%= @doctor.gender %><br>
+    Specialty: <%= @doctor.specialty %><br>
+    Hospital: <%= @doctor.hospital %><br>
+    Address: <%= @doctor.address %><br>
+    City: <%= @doctor.city %><br>
+    State: <%= @doctor.state %><br>
+    Zipcode: <%= @doctor.zipcode %><br>
+
+    <h4>Patient Lists:</h4>
+    <% @doctor.healthcare_teams.each do |care_team| %>
+        <%= care_team.patient.fullname %>
+    <% end %>
+<% end %>

@@ -1,3 +1,5 @@
+<h4>Welcome, <%= current_user.fullname %></h4>
+
 <h5>Filter users type:</h5>
 <%= form_tag("/admin/users", method: "get") do %>
     <%= select_tag "users_type", options_for_select(["Patients", "Doctors"]), prompt: 'All Users' %>

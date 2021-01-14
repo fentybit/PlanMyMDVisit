@@ -1,8 +1,6 @@
-<h4><%= @patient.fullname %></h4>
+<h4>Welcome, <%= @patient.fullname %></h4>
 
-<% if current_user.admin == false %>
-    <h3><%= link_to "Schedule an Appointment", select_specialty_path %></h3>
-<% end %>
+<h3><%= link_to "Schedule an Appointment", select_specialty_path %></h3>
 
 <% @patient.doctors.each do |doctor| %>
     <div>

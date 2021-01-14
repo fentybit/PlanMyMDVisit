@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    # before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     def index 
         if !params[:users_type].blank?
@@ -14,6 +14,14 @@ class Admin::UsersController < ApplicationController
     end 
 
     def show 
+        @user = User.find_by(id: params[:id])
+        @patient = Patient.find_by(user_id: params[:id])
+        @doctor = Doctor.find_by(user_id: params[:id])
+    end 
 
+    def edit 
+    end 
+
+    def update 
     end 
 end
