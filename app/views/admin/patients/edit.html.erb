@@ -1,0 +1,21 @@
+<%= form_with model: [:admin, @patient], local: true do |f| %>
+        
+    <div>
+        <%= f.label :medical_record, "Medical and Surgical Histories" %>
+        <%= f.text_area :medical_record %>
+    </div>
+
+    <div>
+        <%= f.label :test_results, "Test Results" %>
+        <%= f.text_area :test_results %>
+    </div>
+
+    <div>
+        <%= f.label :medications, "Prescription and Non-Prescription Medications" %>
+        <%= f.text_area :medications %>
+    </div>
+
+    <div>
+        <%= f.submit %>
+    </div>
+<% end %>

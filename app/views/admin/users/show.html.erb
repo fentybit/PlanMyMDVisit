@@ -2,6 +2,8 @@ Fullname: <%= @user.fullname %><br>
 Username: <%= @user.username %><br>
 Email: <%= @user.email %><br>
 Admin: <%= @user.admin %><br>
+<%= link_to "Edit Profile", edit_admin_user_path(@user) %>
+<%= button_to "Delete User", @user, method: :delete, data: {confirm: "Are you sure?"} %>
 
 <% if @patient = @user.patient %>
     <h4>Patient Information:</h4>
@@ -9,10 +11,14 @@ Admin: <%= @user.admin %><br>
     Medical Records: <%= @patient.medical_record %><br>
     Test Results: <%= @patient.test_results %><br>
     Medications: <%= @patient.medications %><br>
+    <%= link_to "Edit Patient Information", edit_admin_patient_path(@patient) %>
     
     <h4>Care Teams:</h4>
     <% @patient.healthcare_teams.each do |care_team| %>
-        <%= care_team.doctor.specialty %>
+        <%= care_team.doctor.fullname %><br>
+        <%= care_team.doctor.specialty %><br>
+        <%= link_to "Edit Care Team", edit_admin_healthcare_team_path(care_team) %><br>
+        <%= button_to "Delete Care Team", care_team, method: :delete, data: {confirm: "Are you sure?"} %><br>
     <% end %>
 
 <% elsif @doctor = @user.doctor %>
@@ -25,9 +31,14 @@ Admin: <%= @user.admin %><br>
     City: <%= @doctor.city %><br>
     State: <%= @doctor.state %><br>
     Zipcode: <%= @doctor.zipcode %><br>
+    <%= link_to "Edit Doctor Information", edit_admin_doctor_path(@doctor) %>
 
     <h4>Patient Lists:</h4>
     <% @doctor.healthcare_teams.each do |care_team| %>
-        <%= care_team.patient.fullname %>
+        <div>
+            <%= care_team.patient.fullname %><br>
+            <%= link_to "Edit Patient Medical Chart", edit_admin_healthcare_team_path(care_team) %><br>
+            <%= button_to "Delete Care Team", care_team, method: :delete, data: {confirm: "Are you sure?"} %><br>
+        </div>
     <% end %>
 <% end %>

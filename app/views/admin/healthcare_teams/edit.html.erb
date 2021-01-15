@@ -1,0 +1,40 @@
+<%= form_with model: [:admin, care_team], local: true do |f| %>
+    <div>
+        Patient Name:<br>
+        <%= careteam.patient.fullname %><br>
+        Doctor Name:<br>
+        <%= careteam.doctor.fullname %><br>
+    </div>
+        
+    <div>
+        <%= f.label :appointment, "Appointment" %>
+        <%= f.datetime :appointment %>
+    </div>
+
+    <div>
+        <%= f.label :test_result, "Test Result" %>
+        <%= f.text_area :test_result %>
+    </div>
+
+    <div>
+        <%= f.label :treatment_plans, "Treatment Plans" %>
+        <%= f.text_area :treatment_plans %>
+    </div>
+
+    <div>
+        <%= f.label :prescriptions, "Prescriptions" %>
+        <%= f.text_area :prescriptions %>
+    </div>
+
+    <div>
+        <%= f.label :billing, "Billing" %>
+        <%= f.decimal :billing %>
+    </div>
+
+    Care Team was created at <%= care_team.created_at %><br>
+    Care Team was updated at <%= care_team.updated_at %><br>
+
+    <div>
+        <%= f.submit %>
+    </div>
+<% end %>

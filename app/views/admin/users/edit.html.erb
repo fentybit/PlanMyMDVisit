@@ -1,4 +1,8 @@
-<%= form_with model: @user, local: true do |f| %>
+<h3>Edit page</h3>
+
+<%= render partial: '/errors', locals: { record: @user } %>
+
+<%= form_with model: [:admin, @user], local: true do |f| %>
     <div>
         <%= f.label :firstname, "First Name" %>
         <%= f.text_field :firstname %>
@@ -28,7 +32,12 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation %>
     </div>
-
+    
+    <div>
+        <%= f.label :admin, "Is this user an admin?" %>
+        <%= f.check_box :admin %>
+    </div>
+    
     <div>
         <%= f.submit %>
     </div>

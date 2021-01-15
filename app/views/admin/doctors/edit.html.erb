@@ -1,0 +1,40 @@
+<%= form_with model: [:admin, @doctor], local: true do |f| %>      
+    <div>
+        <%= f.label :gender, "Gender" %>
+        <%= f.text_field :gender %>
+    </div>
+
+    <div>
+        <%= f.label :specialty, "Specialty" %>
+        <%= f.text_field :specialty %>
+    </div>
+
+    <div>
+        <%= f.label :hospital, "Hospital" %>
+        <%= f.text_field :hospital %>
+    </div>
+
+    <div>
+        <%= f.label :address, "Address" %>
+        <%= f.text_field :address %>
+    </div>
+
+    <div>
+        <%= f.label :city, "City" %>
+        <%= f.text_field :city %>
+    </div>
+
+    <div>
+        <%= f.label :state, "State" %>
+        <%= f.text_field :state %>
+    </div>
+
+    <div>
+        <%= f.label :zipcode, "Zipcode" %>
+        <%= f.text_field :zipcode %>
+    </div>
+
+    <div>
+        <%= f.submit %>
+    </div>
+<% end %>

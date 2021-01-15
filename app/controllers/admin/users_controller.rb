@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+    before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     def index 
         if !params[:users_type].blank?
@@ -20,5 +21,31 @@ class Admin::UsersController < ApplicationController
     end 
 
     def update 
+        @user.update(user_params)
+
+        if @user.save
+            redirect_to admin_user_path(@user)
+        else  
+            render :edit
+        end 
     end 
+
+    def destroy
+        @user.destroy
+        @user.patient.destroy
+        @user.doctor.destroy
+        flash[:notice] = "User deleted."
+        redirect_to admin_users_path ## NEED TO TEST 
+    end 
+
+    private 
+
+        def set_user
+            @user = User.find_by(id: params[:id])
+        end 
+
+        def user_params
+            params.require(:user).permit(:username, :email, :password, :password_confirmation, :firstname, :lastname, :admin)
+        end
+    
 end

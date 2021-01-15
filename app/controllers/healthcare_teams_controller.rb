@@ -1,5 +1,4 @@
 class HealthcareTeamsController < ApplicationController
-    before_action :set_healthcareteam, only: [:show, :edit, :update, :destroy]
 
     def index
         if params[:patient_id]
@@ -66,33 +65,7 @@ class HealthcareTeamsController < ApplicationController
         end 
     end 
 
-    # admin privilege
-    def edit
-    end 
-    
-    # admin privilege
-    def update
-        @healthcare_team.update(healthcareteam_params)
-
-        if @healthcare_team.save
-            redirect_to healthcare_team_path(@healthcare_team)
-        else  
-            render :edit
-        end 
-    end
-
-    # admin privilege
-    def destroy
-        @healthcare_team.destroy
-        flash[:notice] = "Care Team deleted."
-        redirect_to healthcareteams_path
-    end 
-
     private 
-
-        def set_healthcareteam
-            @healthcare_team = HealthcareTeam.find_by(id: params[:id])
-        end 
 
         def healthcareteam_params
             params.require(:healthcare_team).permit(:department, :appointment, :test_result, :treatment_plans, :prescriptions, :billing)
