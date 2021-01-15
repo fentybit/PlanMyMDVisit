@@ -8,16 +8,22 @@ class Admin::HealthcareTeamsController < ApplicationController
         @healthcare_team.update(healthcareteam_params)
 
         if @healthcare_team.save
-            redirect_to admin_user_path(@healthcare_team.user) ## NEED TO DEBUG
+            render :edit
         else  
             render :edit
         end 
     end 
 
     def destroy
-        @healthcare_team.destroy
-        flash[:notice] = "Care Team deleted."
-        redirect_to admin_healthcareteams_path
+        @user = User.find_by(id: params[:user_id])
+        if @user 
+            @healthcare_team.destroy
+            flash[:notice] = "Care Team deleted."
+            redirect_to admin_user_path(@user)
+        else
+            flash[:notice] = "Invalid URL path."
+            redirect_to admin_users_path
+        end 
     end 
 
     private 

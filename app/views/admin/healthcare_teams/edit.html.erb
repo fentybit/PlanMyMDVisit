@@ -1,14 +1,14 @@
-<%= form_with model: [:admin, care_team], local: true do |f| %>
+<%= form_with model: [:admin, @healthcare_team], local: true do |f| %>
     <div>
         Patient Name:<br>
-        <%= careteam.patient.fullname %><br>
+        <%= @healthcare_team.patient.fullname %><br>
         Doctor Name:<br>
-        <%= careteam.doctor.fullname %><br>
+        <%= @healthcare_team.doctor.fullname %><br>
     </div>
         
     <div>
         <%= f.label :appointment, "Appointment" %>
-        <%= f.datetime :appointment %>
+        <%= f.datetime_field :appointment %>
     </div>
 
     <div>
@@ -28,13 +28,16 @@
 
     <div>
         <%= f.label :billing, "Billing" %>
-        <%= f.decimal :billing %>
+        <%= f.number_field :billing, min: 0, step: 0.01 %>
     </div>
 
-    Care Team was created at <%= care_team.created_at %><br>
-    Care Team was updated at <%= care_team.updated_at %><br>
+    Care Team was created at <%= date_and_time(@healthcare_team.created_at) %><br>
+    Care Team was updated at <%= date_and_time(@healthcare_team.updated_at) %><br>
 
     <div>
         <%= f.submit %>
     </div>
 <% end %>
+
+<%= link_to "Back to Patient's Profile", admin_user_path(@healthcare_team.patient.user) %>
+<%= link_to "Back to Doctor's Profile", admin_user_path(@healthcare_team.doctor.user) %>

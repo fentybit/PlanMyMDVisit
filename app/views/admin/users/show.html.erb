@@ -3,7 +3,7 @@ Username: <%= @user.username %><br>
 Email: <%= @user.email %><br>
 Admin: <%= @user.admin %><br>
 <%= link_to "Edit Profile", edit_admin_user_path(@user) %>
-<%= button_to "Delete User", @user, method: :delete, data: {confirm: "Are you sure?"} %>
+<%= button_to "Delete User", [:admin, @user], method: :delete, data: {confirm: "Are you sure?"} %>
 
 <% if @patient = @user.patient %>
     <h4>Patient Information:</h4>
@@ -18,7 +18,7 @@ Admin: <%= @user.admin %><br>
         <%= care_team.doctor.fullname %><br>
         <%= care_team.doctor.specialty %><br>
         <%= link_to "Edit Care Team", edit_admin_healthcare_team_path(care_team) %><br>
-        <%= button_to "Delete Care Team", care_team, method: :delete, data: {confirm: "Are you sure?"} %><br>
+        <%= button_to "Delete Care Team", [:admin, care_team], method: :delete, data: {confirm: "Are you sure?"}, params: { 'user_id' => @patient.user }  %><br>
     <% end %>
 
 <% elsif @doctor = @user.doctor %>
@@ -38,7 +38,7 @@ Admin: <%= @user.admin %><br>
         <div>
             <%= care_team.patient.fullname %><br>
             <%= link_to "Edit Patient Medical Chart", edit_admin_healthcare_team_path(care_team) %><br>
-            <%= button_to "Delete Care Team", care_team, method: :delete, data: {confirm: "Are you sure?"} %><br>
+            <%= button_to "Delete Care Team", [:admin, care_team], method: :delete, data: {confirm: "Are you sure?"}, params: { 'user_id' => @doctor.user } %><br>
         </div>
     <% end %>
 <% end %>

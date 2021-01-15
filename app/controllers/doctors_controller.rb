@@ -9,7 +9,7 @@ class DoctorsController < ApplicationController
     end 
 
     # admin privilege
-    # patient can only view limited information
+    # patient can only view limited Doctor's information
     def show
     end 
 

@@ -31,11 +31,19 @@ class Admin::UsersController < ApplicationController
     end 
 
     def destroy
-        @user.destroy
-        @user.patient.destroy
-        @user.doctor.destroy
+        @patient = @user.patient 
+        @doctor = @user.doctor 
+        
+        if !@patient.nil?
+            @user.destroy
+            @patient.destroy
+        else
+            @user.destroy
+            @doctor.destroy
+        end 
+
         flash[:notice] = "User deleted."
-        redirect_to admin_users_path ## NEED TO TEST 
+        redirect_to admin_users_path
     end 
 
     private 
