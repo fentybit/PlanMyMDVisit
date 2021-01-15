@@ -30,11 +30,11 @@ class User < ApplicationRecord
         end 
     end 
 
-    def patients 
-        User.joins(:patient).where("user_id")
+    def self.patients 
+        joins(:patient).where("user_id")
     end 
 
-    def doctors 
-        User.joins(:doctor).where("user_id")
+    def self.doctors 
+        joins(:doctor).where("user_id")
     end 
 end 

@@ -16,7 +16,6 @@ class HealthcareTeam < ApplicationRecord
 
     def start_time
         self.appointment
-        ##Where 'start' is a attribute of type 'Date' accessible through MyModel's relationship
     end
 
     private 

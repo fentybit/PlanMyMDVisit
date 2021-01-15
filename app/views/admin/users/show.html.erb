@@ -3,8 +3,9 @@ Username: <%= @user.username %><br>
 Email: <%= @user.email %><br>
 Admin: <%= @user.admin %><br>
 
-<% if @user.patient %>
+<% if @patient = @user.patient %>
     <h4>Patient Information:</h4>
+   
     Medical Records: <%= @patient.medical_record %><br>
     Test Results: <%= @patient.test_results %><br>
     Medications: <%= @patient.medications %><br>
@@ -14,8 +15,9 @@ Admin: <%= @user.admin %><br>
         <%= care_team.doctor.specialty %>
     <% end %>
 
-<% elsif @user.doctor %>
+<% elsif @doctor = @user.doctor %>
     <h4>Doctor Information:</h4>
+
     Gender: <%= @doctor.gender %><br>
     Specialty: <%= @doctor.specialty %><br>
     Hospital: <%= @doctor.hospital %><br>
