@@ -14,18 +14,42 @@
   </nav>
 
   <body>
-    <% flash.each do |type, msg| %>
+    <div class="container">
+      <% flash.each do |type, msg| %>
+        <div>
+          <i><%= msg %></i>
+        </div>
+      <% end %>
+
       <div>
-        <i><%= msg %></i>
+        <%= yield %>
       </div>
-    <% end %>
 
-    <div>
-      <%= yield %>
-    </div>
-
-    <div class="footer">
-      <small>&copy; 2021 <strong>Plan My MD Visit</strong></small>
     </div>
   </body>
+
+  <footer class="page-footer">
+    <div class="col l4 offset-l2 s12">
+      <h5 class="white-text">Links</h5>
+      <ul>
+        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-copyright">
+      <div class="container">
+        <small>&copy; 2021 <strong>Plan My MD Visit</strong></small>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    $(document).ready(function() {
+      $('select').material_select();
+    });
+  </script>
+
 </html>

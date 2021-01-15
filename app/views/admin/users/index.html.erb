@@ -2,14 +2,23 @@
 List of users below.
 
 <h5>Filter users type:</h5>
-<%= form_tag("/admin/users", method: "get") do %>
-    <%= select_tag "users_type", options_for_select(["Patients", "Doctors"]), prompt: 'All Users' %>
 
-    <%= submit_tag "Filter" %>
-<% end %>
+<div class="">
+    <%= form_tag("/admin/users", method: "get", class: "col s12") do %>
+        <%= select_tag "users_type", options_for_select(["Patients", "Doctors"]), prompt: 'All Users', class: "browser-default" %>
+
+        <%= submit_tag "Filter" %>
+    <% end %>
+</div>
 
 <div>
     <% @users.each do |user| %>
         <%= link_to "#{user.fullname}", admin_user_path(user) %>
     <% end %>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+</script>
