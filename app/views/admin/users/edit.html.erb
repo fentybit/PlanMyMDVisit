@@ -1,4 +1,4 @@
-<h4>Edit User Page</h4>
+<h4>Edit User Profile</h4>
 
 <%= render partial: '/errors', locals: { record: @user } %>
 
@@ -41,6 +41,9 @@
     </div>
 
     <br>
+    User Information was created at <%= date_and_time(@user.created_at) %><br>
+    User Information was updated at <%= date_and_time(@user.updated_at) %><br>
+    <br>
     
     <div>
         <%= f.submit "Update User", class: "waves-effect waves-light btn" %>
@@ -51,5 +54,4 @@
 
 <%= link_to "Back to User's Profile", admin_user_path(@user), class: "waves-effect waves-light btn" %>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<br><br>

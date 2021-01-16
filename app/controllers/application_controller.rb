@@ -9,13 +9,6 @@ class ApplicationController < ActionController::Base
     helper_method :current_user, :current_patient, :logged_in?
 
     def home 
-        # if logged_in?
-        #     if current_user.admin == true 
-        #         redirect_to admin_users_path 
-        #     end 
-            
-        #     redirect_to patient_path(current_patient)
-        # end 
     end 
 
     def logged_in? 

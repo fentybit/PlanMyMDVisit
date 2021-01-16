@@ -51,8 +51,8 @@
 @import "materialize/components/tooltip";
 @import "materialize/components/buttons";
 
-.btn {
-    background-color: #1565c0;
+.btn, .btn-large {
+    background-color: #1565c0 !important;
     color: white;
  }
 

@@ -19,10 +19,17 @@
     </div>
 
     <br>
+    Patient Information was created at <%= date_and_time(@patient.created_at) %><br>
+    Patient Information was updated at <%= date_and_time(@patient.updated_at) %><br>
+    <br>
 
     <div>
         <%= f.submit "Update Patient Information", class: "waves-effect waves-light btn" %>
     </div>
 <% end %>
 
-<%= link_to "Back to Patient's Profile", admin_user_path(@patient.user) %>
+<br>
+
+<%= link_to "Back to Patient's Profile", admin_user_path(@patient.user), class: "waves-effect waves-light btn" %>
+
+<br><br>

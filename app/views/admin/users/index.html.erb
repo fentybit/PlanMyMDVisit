@@ -1,5 +1,5 @@
 <h4>Welcome, <%= current_user.fullname %></h4>
-
+<h6>As an admin, you have privileges to access patients, doctors and care teams information.</h6>
 <br>
 
 <h6>List of users. Filter users type:</h6>
@@ -16,7 +16,7 @@
 
 <div>
     <% @users.each do |user| %>
-        <%= link_to "#{user.fullname}", admin_user_path(user) %>   - 
+        <%= link_to "#{user.fullname}", admin_user_path(user) %> |
     <% end %>
 </div>
 

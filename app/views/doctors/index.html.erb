@@ -1,10 +1,11 @@
-<h4>Doctors available in our healthcare provider</h4>
+<h4>In-Network Doctors</h4>
+<h6>Filter doctors by specialty:</h6>
 
 <div>
-    <h5>Filter doctors by specialty:</h5>
     <%= form_tag("/doctors", method: "get") do %>
-        <%= select_tag "specialty", options_from_collection_for_select(Doctor.specialties, :specialty, :specialty), prompt: 'Please Select' %>
-        <%= submit_tag "Filter" %>
+        <%= select_tag "specialty", options_from_collection_for_select(Doctor.specialties, :specialty, :specialty), prompt: 'Please Select', class: "browser-default" %>
+        <br>
+        <%= submit_tag "Filter", class: "waves-effect waves-light btn" %>
     <% end %>
 </div>
 
@@ -12,7 +13,8 @@
 
 <% @doctors.order(specialty: :asc).each do |doctor| %>
     <div>
-        <strong><%= link_to "#{ doctor.fullname }", doctor_path(doctor) %></strong>
-        <i><%= doctor.specialty %></i>
+        <i><%= doctor.specialty %></i> | <strong><%= link_to "#{ doctor.fullname }", doctor_path(doctor) %></strong>
     </div>
 <% end %>
+
+<br>

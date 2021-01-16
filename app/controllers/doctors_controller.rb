@@ -11,6 +11,7 @@ class DoctorsController < ApplicationController
     # admin privilege
     # patient can only view limited Doctor's information
     def show
+        @doctor = Doctor.find_by(id: params[:id])
     end 
 
 end 

@@ -1,6 +1,9 @@
-Fullname: <%= @user.fullname %><br>
-Username: <%= @user.username %><br>
-Email: <%= @user.email %><br>
+<h4>User Profile</h4>
+<b>Fullname: </b><%= @user.fullname %><br>
+<b>Username: </b><%= @user.username %><br>
+<b>Email: </b><%= @user.email %><br>
+
+<br>
 
 <% if @user.admin == true %>
     <i>You are an admin</i>
@@ -8,8 +11,10 @@ Email: <%= @user.email %><br>
     <i>You are a patient</i>
 <% end %>
 
-<p><i>Your profile was last updated on <%= date_and_time(@user.created_at) %></i></p>
+<br><br>
 
-<%= link_to "Edit Profile", edit_user_path(@user) %>
+<%= link_to "Edit Profile", edit_user_path(@user), class: "waves-effect waves-light btn" %>
 
-<%= button_to "Delete User", @user, method: :delete, data: {confirm: "Are you sure?"} %>
+<br><br>
+
+<%= button_to "Delete User", @user, method: :delete, data: {confirm: "Are you sure?"}, class: "waves-effect waves-light btn" %>

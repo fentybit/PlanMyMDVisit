@@ -1,13 +1,23 @@
-Fullname: <%= @doctor.fullname %><br>
-Specialty: <%= @doctor.specialty %><br>
-Gender: <%= @doctor.gender %><br>
-Hospital: <%= @doctor.hospital %><br>
+<h4>Doctor Information</h4>
+
+<b>Fullname: </b><%= @doctor.fullname %><br>
+<b>Specialty: </b><%= @doctor.specialty %><br>
+<b>Gender: </b><%= @doctor.gender %><br>
+<b>Hospital: </b><%= @doctor.hospital %><br>
 
 <% if current_user.admin == true %>
-    Address: <%= @doctor.address %><br>
-    City: <%= @doctor.city %><br>
-    State: <%= @doctor.state %><br>
-    Zipcode: <%= @doctor.zipcode %><br>
+    <b>Address: </b><%= @doctor.address %><br>
+    <b>City: </b><%= @doctor.city %><br>
+    <b>State: </b><%= @doctor.state %><br>
+    <b>Zipcode: </b><%= @doctor.zipcode %><br>
+
+    <br>
+
+    <%= link_to "Full Doctor's Profile and Patient Lists", admin_user_path(@doctor.user), class: "waves-effect waves-light btn" %>
 <% end %>
 
-<%= link_to "Back to Doctors List", doctors_path %>
+<br><br>
+
+<%= link_to "Back to Doctors List", doctors_path, class: "waves-effect waves-light btn" %>
+
+<br>

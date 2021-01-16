@@ -1,14 +1,14 @@
-<h4>Edit Care Team Page</h4>
+<h4>Edit Care Team Information</h4>
 
 <%= render partial: '/errors', locals: { record: @healthcare_team } %>
 
 <%= form_with model: [:admin, @healthcare_team], local: true do |f| %>
     <div>
-        Patient Name:<br>
-        <%= @healthcare_team.patient.fullname %><br>
-        Doctor Name:<br>
-        <%= @healthcare_team.doctor.fullname %><br>
+        <b>Patient Name: </b><%= @healthcare_team.patient.fullname %><br>
+        <b>Doctor Name: </b><%= @healthcare_team.doctor.fullname %><br>
     </div>
+
+    <br>
         
     <div>
         <%= f.label :appointment, "Appointment" %>
@@ -35,13 +35,22 @@
         <%= f.number_field :billing, min: 0, step: 0.01 %>
     </div>
 
+    <br>
     Care Team was created at <%= date_and_time(@healthcare_team.created_at) %><br>
     Care Team was updated at <%= date_and_time(@healthcare_team.updated_at) %><br>
+    <br>
 
     <div>
-        <%= f.submit %>
+        <%= f.submit "Update Care Team", class: "waves-effect waves-light btn" %>
     </div>
 <% end %>
 
-<%= link_to "Back to Patient's Profile", admin_user_path(@healthcare_team.patient.user) %>
-<%= link_to "Back to Doctor's Profile", admin_user_path(@healthcare_team.doctor.user) %>
+<br>
+
+<%= link_to "Back to Patient's Profile", admin_user_path(@healthcare_team.patient.user), class: "waves-effect waves-light btn" %>
+
+<br><br>
+
+<%= link_to "Back to Doctor's Profile", admin_user_path(@healthcare_team.doctor.user), class: "waves-effect waves-light btn" %>
+
+<br><br>

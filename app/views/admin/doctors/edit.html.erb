@@ -1,4 +1,4 @@
-<h4>Edit Doctor Information </h4>
+<h4>Edit Doctor Information</h4>
 
 <%= render partial: '/errors', locals: { record: @doctor } %>
 
@@ -38,6 +38,9 @@
         <%= f.text_field :zipcode %>
     </div>
 
+    <br>
+    Doctor Information was created at <%= date_and_time(@doctor.created_at) %><br>
+    Doctor Information was updated at <%= date_and_time(@doctor.updated_at) %><br>
     <br>
 
     <div>
