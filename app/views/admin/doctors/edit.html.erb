@@ -1,3 +1,7 @@
+<h4>Edit Doctor Information </h4>
+
+<%= render partial: '/errors', locals: { record: @doctor } %>
+
 <%= form_with model: [:admin, @doctor], local: true do |f| %>      
     <div>
         <%= f.label :gender, "Gender" %>
@@ -34,9 +38,15 @@
         <%= f.text_field :zipcode %>
     </div>
 
+    <br>
+
     <div>
-        <%= f.submit %>
+        <%= f.submit "Update Doctor", class: "waves-effect waves-light btn" %>
     </div>
 <% end %>
 
-<%= link_to "Back to Doctor's Profile", admin_user_path(@doctor.user) %>
+<br>
+
+<%= link_to "Back to Doctor's Profile", admin_user_path(@doctor.user), class: "waves-effect waves-light btn" %>
+
+<br><br>

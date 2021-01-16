@@ -1,4 +1,4 @@
-<h3>Edit page</h3>
+<h4>Edit User Page</h4>
 
 <%= render partial: '/errors', locals: { record: @user } %>
 
@@ -32,15 +32,24 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation %>
     </div>
-    
+
+    <br>
+
     <div>
-        <%= f.label :admin, "Is this user an admin?" %>
-        <%= f.check_box :admin %>
+        <input type="checkbox" id="test5" name="admin" />
+        <label for="test5">Is this user an admin?</label>
     </div>
+
+    <br>
     
     <div>
-        <%= f.submit %>
+        <%= f.submit "Update User", class: "waves-effect waves-light btn" %>
     </div>
 <% end %>
 
-<%= link_to "Back to User's Profile", admin_user_path(@user) %>
+<br>
+
+<%= link_to "Back to User's Profile", admin_user_path(@user), class: "waves-effect waves-light btn" %>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

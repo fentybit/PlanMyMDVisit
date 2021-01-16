@@ -50,6 +50,12 @@
 @import "materialize/components/tabs";
 @import "materialize/components/tooltip";
 @import "materialize/components/buttons";
+
+.btn {
+    background-color: #1565c0;
+    color: white;
+ }
+
 @import "materialize/components/dropdown";
 @import "materialize/components/waves";
 @import "materialize/components/modal";

@@ -1,44 +1,62 @@
-Fullname: <%= @user.fullname %><br>
-Username: <%= @user.username %><br>
-Email: <%= @user.email %><br>
-Admin: <%= @user.admin %><br>
-<%= link_to "Edit Profile", edit_admin_user_path(@user) %>
-<%= button_to "Delete User", [:admin, @user], method: :delete, data: {confirm: "Are you sure?"} %>
+<h4>User Profile</h4>
+<b>Fullname: </b><%= @user.fullname %><br>
+<b>Username: </b><%= @user.username %><br>
+<b>Email: </b><%= @user.email %><br>
+<b>Admin: </b><%= @user.admin %><br>
+<br>
+<%= link_to "Edit Profile", edit_admin_user_path(@user), class: "waves-effect waves-light btn" %>
+<br><br>
+<%= button_to "Delete User", [:admin, @user], method: :delete, data: {confirm: "Are you sure?"}, class: "waves-effect waves-light btn" %>
+
 
 <% if @patient = @user.patient %>
-    <h4>Patient Information:</h4>
-   
-    Medical Records: <%= @patient.medical_record %><br>
-    Test Results: <%= @patient.test_results %><br>
-    Medications: <%= @patient.medications %><br>
-    <%= link_to "Edit Patient Information", edit_admin_patient_path(@patient) %>
+    <h4>Patient Information</h4>
     
-    <h4>Care Teams:</h4>
+    <b>Medical Records: </b><%= @patient.medical_record %><br>
+    <b>Test Results: </b><%= @patient.test_results %><br>
+    <b>Medications: </b><%= @patient.medications %><br>
+    <br>
+    <%= link_to "Edit Patient Information", edit_admin_patient_path(@patient), class: "waves-effect waves-light btn" %>
+    
+    <h4>Care Teams</h4>
     <% @patient.healthcare_teams.each do |care_team| %>
-        <%= care_team.doctor.fullname %><br>
-        <%= care_team.doctor.specialty %><br>
-        <%= link_to "Edit Care Team", edit_admin_healthcare_team_path(care_team) %><br>
-        <%= button_to "Delete Care Team", [:admin, care_team], method: :delete, data: {confirm: "Are you sure?"}, params: { 'user_id' => @patient.user }  %><br>
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card blue lighten-5">
+                <div class="card-content black-text">
+                    <span class="card-title"><%= care_team.doctor.specialty %></span>
+                    <p><%= care_team.doctor.fullname %></p>
+                </div>
+                <div class="card-action">
+                    <%= link_to "Edit Care Team", edit_admin_healthcare_team_path(care_team), class: "waves-effect waves-light btn" %>
+                    <br><br>
+                    <%= button_to "Delete Care Team", [:admin, care_team], method: :delete, data: {confirm: "Are you sure?"}, params: { 'user_id' => @patient.user }, class: "waves-effect waves-light btn" %>
+                </div>
+                </div>
+            </div>
+        </div>
     <% end %>
 
 <% elsif @doctor = @user.doctor %>
-    <h4>Doctor Information:</h4>
+    <h4>Doctor Information</h4>
 
-    Gender: <%= @doctor.gender %><br>
-    Specialty: <%= @doctor.specialty %><br>
-    Hospital: <%= @doctor.hospital %><br>
-    Address: <%= @doctor.address %><br>
-    City: <%= @doctor.city %><br>
-    State: <%= @doctor.state %><br>
-    Zipcode: <%= @doctor.zipcode %><br>
-    <%= link_to "Edit Doctor Information", edit_admin_doctor_path(@doctor) %>
+    <b>Gender: </b><%= @doctor.gender %><br>
+    <b>Specialty: </b><%= @doctor.specialty %><br>
+    <b>Hospital: </b><%= @doctor.hospital %><br>
+    <b>Address: </b><%= @doctor.address %><br>
+    <b>City: </b><%= @doctor.city %><br>
+    <b>State: </b><%= @doctor.state %><br>
+    <b>Zipcode: </b><%= @doctor.zipcode %><br>
+    <br>
+    <%= link_to "Edit Doctor Information", edit_admin_doctor_path(@doctor), class: "waves-effect waves-light btn" %>
 
-    <h4>Patient Lists:</h4>
+    <h4>Patient Lists</h4>
     <% @doctor.healthcare_teams.each do |care_team| %>
         <div>
             <%= care_team.patient.fullname %><br>
-            <%= link_to "Edit Patient Medical Chart", edit_admin_healthcare_team_path(care_team) %><br>
+            <%= link_to "Edit Patient Medical Chart", edit_admin_healthcare_team_path(care_team), class: "waves-effect waves-light btn" %><br>
             <%= button_to "Delete Care Team", [:admin, care_team], method: :delete, data: {confirm: "Are you sure?"}, params: { 'user_id' => @doctor.user } %><br>
         </div>
     <% end %>
 <% end %>
+

@@ -1,3 +1,7 @@
+<h4>Edit Care Team Page</h4>
+
+<%= render partial: '/errors', locals: { record: @healthcare_team } %>
+
 <%= form_with model: [:admin, @healthcare_team], local: true do |f| %>
     <div>
         Patient Name:<br>
