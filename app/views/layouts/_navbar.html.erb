@@ -1,7 +1,7 @@
 <div class="nav-wrapper">
-    <a class="brand-logo">plan my MD visit</a>
+    <a class="brand-logo", style="left:20px;">plan my MD visit</a>
+    
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-
     <% if logged_in? && current_patient %>
         <li><%= link_to "Home", patient_path(current_patient), class: "waves-effect waves-light btn" %></li>
         <li><%= link_to "Care Team", patient_healthcare_teams_path(current_patient, current_patient.healthcare_teams), class: "waves-effect waves-light btn" %></li>

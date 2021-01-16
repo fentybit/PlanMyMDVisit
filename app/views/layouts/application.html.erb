@@ -1,55 +1,60 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <header>
     <title>PlanMyMdVisit</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  </header>
 
   <nav>
     <%= render 'layouts/navbar' %>
   </nav>
 
   <body>
-    <div class="container">
-      <% flash.each do |type, msg| %>
-        <div>
-          <i><%= msg %></i>
-        </div>
-      <% end %>
-
-      <div>
-        <%= yield %>
-      </div>
-
-    </div>
-  </body>
-
-  <footer class="page-footer">
-    <div class="col l4 offset-l2 s12">
-      <h5 class="white-text">Links</h5>
-      <ul>
-        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-copyright">
+    <main>
       <div class="container">
-        <small>&copy; 2021 <strong>Plan My MD Visit</strong></small>
+        <% flash.each do |type, msg| %>
+          <div>
+            <i><%= msg %></i>
+          </div>
+        <% end %>
+
+        <div>
+          <%= yield %>
+        </div>
       </div>
-    </div>
-  </footer>
+    </main>
 
-  <script>
-    $(document).ready(function() {
-      $('select').material_select();
-    });
-  </script>
+    <footer class="page-footer" >
+      <div class="container">
+              <div class="row">
+                <div class="col l6 s12">
+                  <h5 class="white-text">Footer Content</h5>
+                  <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                  <h5 class="white-text">Links</h5>
+                  <ul>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+      </div>
 
+      <div class="footer-copyright">
+        <div class="container">
+          <small>&copy; 2021 <strong>Plan My MD Visit</strong></small>
+          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+        </div>
+      </div>
+    </footer>
+
+  </body>
 </html>

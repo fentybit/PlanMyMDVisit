@@ -23,6 +23,14 @@
 @import "materialize/components/color-variables";
 @import "materialize/components/color-classes";
 
+.nav-wrapper {
+    @extend .light-blue, .darken-3;
+}
+
+.page-footer {
+    @extend .blue-grey, .darken-2;
+}
+
 // Variables;
 @import "materialize/components/variables";
 
@@ -60,3 +68,4 @@
 @import "materialize/components/timepicker";
 
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
