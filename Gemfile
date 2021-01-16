@@ -47,7 +47,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 
-# dotenv for Environment Variables
+# dotenv for Omniauth Variables
 gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do

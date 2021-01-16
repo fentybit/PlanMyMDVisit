@@ -6,35 +6,40 @@ class SessionsController < ApplicationController
     end 
 
     def create 
-        if auth_hash != nil 
-            @user = User.find_or_create_from_auth_hash(auth_hash)
-            session[:user_id] = @user.id
-            @current_patient = Patient.find_or_create_by(user_id: session[:user_id])
-            # sign up with github
-            
-            if current_patient.healthcare_teams.empty?
-                redirect_to new_patient_path
-            # login with github
-            else  
+        @user = User.find_by(username: params[:user][:username])
+        
+        if @user && @user.authenticate(params[:user][:password])##
+            session[:user_id] = @user.id 
+
+            if @user.admin == true 
+                redirect_to admin_users_path 
+            else 
+                current_patient                    
                 redirect_to patient_path(current_patient)
             end 
-        else 
-            @user = User.find_by(username: params[:user][:username])
-            
-            if @user && @user.authenticate(params[:user][:password])##
-                session[:user_id] = @user.id 
-
-                if @user.admin == true 
-                    redirect_to admin_users_path 
-                else 
-                    current_patient                    
-                    redirect_to patient_path(current_patient)
-                end 
-            else  
-                flash[:alert] = "Please try again."
-                render :new 
-            end 
+        else  
+            flash[:alert] = "Please try again."
+            render :new 
         end 
+    end 
+
+    def omniauth
+        if auth_hash != nil && auth_hash.provider == "google_oauth2"
+            @user = User.find_or_create_by_google(auth_hash)
+        elsif auth_hash != nil && auth_hash.provider == "github"
+            @user = User.find_or_create_by_github(auth_hash)
+        end 
+
+        session[:user_id] = @user.id
+        @current_patient = Patient.find_or_create_by(user_id: session[:user_id])
+    
+        # sign up with GitHub and Google
+        if current_patient.healthcare_teams.empty?
+            redirect_to new_patient_path
+        # login with GitHub and Google
+        else  
+            redirect_to patient_path(current_patient)
+        end
     end 
 
     # user log out
