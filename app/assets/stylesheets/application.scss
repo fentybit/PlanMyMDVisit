@@ -24,11 +24,11 @@
 @import "materialize/components/color-classes";
 
 .nav-wrapper {
-    @extend .light-blue, .darken-3;
+    @extend .blue, .darken-1;
 }
 
 .page-footer {
-    @extend .blue-grey, .darken-2;
+    @extend .blue, .darken-4;
 }
 
 // Variables;
@@ -69,3 +69,12 @@
 
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+flex: 1 0 auto;
+}

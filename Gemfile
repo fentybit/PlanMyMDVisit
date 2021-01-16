@@ -45,6 +45,7 @@ gem 'materialize-sass', '~> 1.0.0'
 # Authentication System
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
 
 # dotenv for Environment Variables
 gem 'dotenv-rails', groups: [:development, :test]

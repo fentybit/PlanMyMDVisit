@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  # Omniauth GitHub route
-  match '/auth/github/callback', to: 'sessions#create', via: [:get, :post]
+  # Omniauth GitHub and Google route
+  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 
   # Only Admin can see Users Index
   resources :users, except: [:index]  
