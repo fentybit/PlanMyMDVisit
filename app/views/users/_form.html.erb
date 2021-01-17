@@ -36,15 +36,11 @@
         <label for="test5">"Are you an admin?"</label>
     </div>
 
-    <br>
+    <br><br>
 
     <div>
-        <%= f.submit "Update User", class: "waves-effect waves-light btn" %>
+        <a class="waves-effect waves-light btn"><%= f.submit %></a>
     </div>
 <% end %>
 
 <br>
-
-<%= link_to "Back to User's Profile", user_path(@user), class: "waves-effect waves-light btn" %>
-
-<br><br>

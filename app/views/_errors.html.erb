@@ -1,3 +1,6 @@
 <% record.errors.full_messages.each do |error| %>
-    <p><i><%= error %></i></p>
+        <div class="chip">
+            <%= error %>
+            <i class="close material-icons">close</i>
+        </div>
 <% end %>

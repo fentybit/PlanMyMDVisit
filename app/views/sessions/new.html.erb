@@ -1,8 +1,6 @@
-<h1>Log In page</h1>
+<h4>Log In to Your Account</h4>
 
-<% flash.each do |type, msg| %>
-    <i><%= msg %></i>
-<% end %>
+<br>
 
 <%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
     <%= label_tag :username %>
@@ -11,5 +9,8 @@
     <%= label_tag :password %>
     <%= password_field_tag name="user[password]" %>
 
-    <%= submit_tag "Log In" %>
+    <br><br>
+
+    <%= submit_tag "Log In", class: "waves-effect waves-light btn" %>
 <% end %>
+

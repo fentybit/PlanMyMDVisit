@@ -3,3 +3,7 @@
 <%= render partial: '/errors', locals: { record: @user } %>
 
 <%= render 'form' %>
+
+<%= link_to "Back to User's Profile", user_path(@user), class: "waves-effect waves-light btn" %>
+
+<br><br>

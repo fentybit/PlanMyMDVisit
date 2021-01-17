@@ -39,6 +39,7 @@
 
 // materialize/components
 @import "materialize/components/global";
+
 @import "materialize/components/badges";
 @import "materialize/components/icons-material-design";
 @import "materialize/components/grid";
@@ -83,4 +84,8 @@ body {
 
 main {
 flex: 1 0 auto;
+}
+
+html, body, .my-wrapper {
+    height: 100%;
 }

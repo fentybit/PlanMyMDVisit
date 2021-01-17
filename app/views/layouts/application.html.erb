@@ -23,17 +23,20 @@
   <body>
     <%= render 'layouts/navbar' %>
 
-    <main>
-      <div class="container">
-        <% flash.each do |type, msg| %>
-          <div>
-            <i><%= msg %></i>
-          </div>
-        <% end %>
+    <br>
 
-        <div>
-          <%= yield %>
+    <main>
+      <% flash.each do |type, msg| %>
+        <div class="container">
+          <div class="chip">
+            <%= msg %>
+            <i class="close material-icons">close</i>
+          </div>
         </div>
+      <% end %>
+      
+      <div class="container">
+        <%= yield %>
       </div>
     </main>
 

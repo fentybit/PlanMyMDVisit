@@ -3,7 +3,7 @@
 
 <div>
     <%= form_tag("/doctors", method: "get") do %>
-        <%= select_tag "specialty", options_from_collection_for_select(Doctor.specialties, :specialty, :specialty), prompt: 'Please Select', class: "browser-default" %>
+        <%= select_tag "specialty", options_from_collection_for_select(Doctor.specialties, :specialty, :specialty), prompt: 'Please Select' %>
         <br>
         <%= submit_tag "Filter", class: "waves-effect waves-light btn" %>
     <% end %>
@@ -18,3 +18,9 @@
 <% end %>
 
 <br>
+
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+</script>

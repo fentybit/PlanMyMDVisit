@@ -6,6 +6,17 @@
         <%= f.collection_select :doctor_id, Doctor.general_practice, :id, :fullname, prompt: 'Please select' %>
     </div>
 
+<!--
+<div>
+    <%= form_tag("/admin/users", method: "get", class: "col s12") do %>
+        <%= select_tag "users_type", options_for_select(["Patients", "Doctors"]), prompt: 'All Users', class: "browser-default" %>
+        <br>
+        <%= submit_tag "Filter", class: "waves-effect waves-light btn" %>
+    <% end %>
+</div>
+-->
+
+
     <div>
         <%= f.label :medical_record, "Medical and Surgical Histories" %>
         <%= f.text_area :medical_record %>
@@ -25,3 +36,9 @@
         <%= f.submit %>
     </div>
 <% end %>
+
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+</script>
