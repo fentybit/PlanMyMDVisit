@@ -28,7 +28,7 @@ class PatientsController < ApplicationController
     # patient main homepage
     def show  
         @patient = Patient.find_by(id: params[:id])
-
+        
         if @patient != current_patient
             flash[:alert] = "Error URL path."
             redirect_to patient_path(current_patient)

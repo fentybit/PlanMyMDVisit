@@ -1,26 +1,55 @@
 <h4>Welcome, <%= @patient.fullname %></h4>
 
-<h3><%= link_to "Schedule an Appointment", select_specialty_path %></h3>
+<div class="col s12 m7">
+  <div class="card horizontal">   
+      <div class="card-content">
+        <b><a class="bold red-text">Coronavirus/COVID-19 Alert</a></b>
+        <p>If you have been in close contact with someone with coronavirus (COVID-19) and have experienced any of the following: fever, cough, diarrhea, cold/flu-like symptoms or have concerns that your current symptoms are related to COVID-19, please contact your doctor's office or local public health department for further direction.</p>
+      </div>
+  </div>
+</div>
 
-<% @patient.doctors.each do |doctor| %>
-    <div>
-        <strong><%= doctor.fullname %></strong>
-        <%= doctor.specialty %>
-    </div>
-<% end %>
+<p><strong>plan my MD visit</strong> is not for use in emergencies or for messages that require immediate attention. For medical or psychiatric emergencies, call 911 or go to the nearest hospital.</p>
+    
 
-<% @patient.medical_record %>
-<% @patient.test_results %>
-<% @patient.medications %>
 
-<br>
+<%= link_to "Schedule an Appointment", select_specialty_path, class: "waves-effect waves-light btn" %> 
 
-<%= month_calendar(events: @patient.healthcare_teams) do |date, appointments| %>
-  <%= date.day %>
+<br><br>
 
-  <% appointments.each do |appointment| %>
-    <div>
-      <%= appointment.doctor.fullname %>
-    </div>
-  <% end %>
-<% end %>
+<div class="row">
+  <div class="col s4">
+    
+    <h5>Your Care Team</h5>
+
+    <% @patient.healthcare_teams.order(appointment: :desc).limit(2).each do |care_team| %>
+      <div class="card blue lighten-5">
+        <div class="card-content black-text">
+          <span class="card-title"><%= care_team.doctor.specialty %></span>
+        </div>
+        <div class="card-action">
+          <%= care_team.doctor.fullname %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= link_to "View All", patient_healthcare_teams_path(current_patient, current_patient.healthcare_teams), class: "waves-effect waves-light btn" %> 
+
+    <br><br>
+
+    <p>Get answers to your medical questions from the comfort of your own home.</p>
+  </div>
+
+  <div class="col s8">
+    <%= month_calendar(events: @patient.healthcare_teams) do |date, appointments| %>
+      <%= date.day %>
+
+      <% appointments.each do |appt| %>
+        <div>
+          <strong><%= time(appt.appointment) %></strong><br>
+          <%= appt.doctor.fullname %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

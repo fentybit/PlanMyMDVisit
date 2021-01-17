@@ -2,20 +2,9 @@
     <%= f.hidden_field :user_id, value: current_user.id %>
         
     <div>
-        <%= f.label :doctor, "Please select your pre-assigned General Practitioner" %>
+        <%= f.label :doctor, "Please select your existing General Practitioner" %>
         <%= f.collection_select :doctor_id, Doctor.general_practice, :id, :fullname, prompt: 'Please select' %>
     </div>
-
-<!--
-<div>
-    <%= form_tag("/admin/users", method: "get", class: "col s12") do %>
-        <%= select_tag "users_type", options_for_select(["Patients", "Doctors"]), prompt: 'All Users', class: "browser-default" %>
-        <br>
-        <%= submit_tag "Filter", class: "waves-effect waves-light btn" %>
-    <% end %>
-</div>
--->
-
 
     <div>
         <%= f.label :medical_record, "Medical and Surgical Histories" %>
@@ -32,8 +21,10 @@
         <%= f.text_area :medications %>
     </div>
 
+    <br>
+
     <div>
-        <%= f.submit %>
+        <a class="waves-effect waves-light btn"><%= f.submit %></a>
     </div>
 <% end %>
 
