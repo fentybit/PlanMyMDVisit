@@ -25,7 +25,7 @@
     <% @patient.healthcare_teams.order(appointment: :desc).limit(2).each do |care_team| %>
       <div class="card blue lighten-5">
         <div class="card-content black-text">
-          <span class="card-title"><%= care_team.doctor.specialty %></span>
+          <span class="card-title truncate"><%= care_team.doctor.specialty %></span>
         </div>
         <div class="card-action">
           <%= care_team.doctor.fullname %>

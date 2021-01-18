@@ -1,10 +1,18 @@
 <%= form_with url: new_patient_healthcare_team_path(current_patient, @healthcare_team), method: "post", local: true do |f| %>
-    <%= f.label :specialty, "What doctor specialty?" %>
+    <%= f.label :specialty, "Please specify Doctor's Specialty" %>
     <div>
-        <%= f.collection_select :specialty, Doctor.specialties, :specialty, :specialty, prompt: 'Please select', include_blank: false, class: "browser-default" %>
+        <%= f.collection_select :specialty, Doctor.specialties, :specialty, :specialty, prompt: 'Please select', include_blank: false %>
     </div>
 
-    <>
-        <%= f.submit "Next" %>
-    </>
+    <br>
+
+    <div>
+        <%= f.submit "Next", class: "waves-effect waves-light btn" %>
+    </div>
 <% end %>
+
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+</script>
