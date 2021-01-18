@@ -1,6 +1,18 @@
-<% @healthcare_teams.each do |healthcare_team| %>
-    <div>
-        <h4><%= link_to "#{healthcare_team.doctor_fullname}", patient_healthcare_team_path(@patient, healthcare_team) %></h4>
-        <%= healthcare_team.doctor_specialty %>
+<h4>My Care Teams</h4>
+
+<div class="row">
+    <div class="col s12 cards-container">
+        <% @healthcare_teams.each do |healthcare_team| %>
+            <div class="card blue lighten-5">
+                <div class="card-content black-text">
+                    <span class="card-title"><%= link_to "#{healthcare_team.doctor_fullname}", patient_healthcare_team_path(@patient, healthcare_team) %></span>
+                    <p><%= date_time(healthcare_team.appointment) %></p>
+                </div>
+                
+                <div class="card-action">
+                    <%= healthcare_team.doctor_specialty %>
+                </div>
+            </div>
+        <% end %>
     </div>
-<% end %>
+</div>

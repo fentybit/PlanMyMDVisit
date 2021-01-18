@@ -6,4 +6,8 @@ module HealthcareTeamsHelper
     def time(appointment)
         appointment.strftime("%l:%M %p")
     end 
+
+    def date_time(appointment)
+        appointment.strftime("%B %d, %Y at %l:%M %p")
+    end 
 end

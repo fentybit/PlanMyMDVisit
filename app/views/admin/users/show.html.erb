@@ -19,24 +19,25 @@
     <%= link_to "Edit Patient Information", edit_admin_patient_path(@patient), class: "waves-effect waves-light btn" %>
     
     <h4>Care Teams</h4>
-    <% @patient.healthcare_teams.each do |care_team| %>
-        <div class="row">
-            <div class="col s12 m6">
+    
+    <div class="row">
+        <div class="col s12 cards-container">
+            <% @patient.healthcare_teams.each do |care_team| %>
                 <div class="card blue lighten-5">
-                <div class="card-content black-text">
-                    <span class="card-title"><%= care_team.doctor.specialty %></span>
-                    <p><%= care_team.doctor.fullname %></p>
-                    <p><%= appointment_time(care_team) %></p>
-                </div>
-                <div class="card-action" align="center">
-                    <%= link_to "Edit Care Team", edit_admin_healthcare_team_path(care_team), class: "waves-effect waves-light btn" %>
-                    <br><br>
-                    <%= button_to "Delete Care Team", [:admin, care_team], method: :delete, data: {confirm: "Are you sure?"}, params: { 'user_id' => @patient.user }, class: "waves-effect waves-light btn" %>
-                </div>
-                </div>
-            </div>
+                    <div class="card-content black-text">
+                        <span class="card-title"><%= care_team.doctor.specialty %></span>
+                        <p><%= care_team.doctor.fullname %><br>
+                        <%= date_time(care_team.appointment) %></p>
+                    </div>
+                    <div class="card-action" align="center">
+                        <%= link_to "Edit Care Team", edit_admin_healthcare_team_path(care_team), class: "waves-effect waves-light btn" %>
+                        <br><br>
+                        <%= button_to "Delete Care Team", [:admin, care_team], method: :delete, data: {confirm: "Are you sure?"}, params: { 'user_id' => @patient.user }, class: "waves-effect waves-light btn" %>
+                    </div>
+                </div>  
+            <% end %>
         </div>
-    <% end %>
+    </div>
 
 <% elsif @doctor = @user.doctor %>
     <h4>Doctor Information</h4>
@@ -52,21 +53,22 @@
     <%= link_to "Edit Doctor Information", edit_admin_doctor_path(@doctor), class: "waves-effect waves-light btn" %>
 
     <h4>Patient Lists</h4>
-    <% @doctor.healthcare_teams.each do |care_team| %>
-        <div class="row">
-            <div class="col s12 m6">
+
+    <div class="row">
+        <div class="col s12 cards-container">
+            <% @doctor.healthcare_teams.each do |care_team| %>
                 <div class="card blue lighten-5">
-                <div class="card-content black-text">
-                    <span class="card-title"><%= care_team.patient.fullname %></span>
-                    <p><%= appointment_time(care_team) %></p>
+                    <div class="card-content black-text">
+                        <span class="card-title"><%= care_team.patient.fullname %></span>
+                        <p><%= date_time(care_team.appointment) %></p>
+                    </div>
+                    <div class="card-action" align="center">
+                        <%= link_to "Edit Patient Medical Chart", edit_admin_healthcare_team_path(care_team), class: "waves-effect waves-light btn" %>
+                        <br><br>
+                        <%= button_to "Delete Care Team", [:admin, care_team], method: :delete, data: {confirm: "Are you sure?"}, params: { 'user_id' => @doctor.user }, class: "waves-effect waves-light btn" %>
+                    </div>
                 </div>
-                <div class="card-action" align="center">
-                    <%= link_to "Edit Patient Medical Chart", edit_admin_healthcare_team_path(care_team), class: "waves-effect waves-light btn" %>
-                    <br><br>
-                    <%= button_to "Delete Care Team", [:admin, care_team], method: :delete, data: {confirm: "Are you sure?"}, params: { 'user_id' => @doctor.user }, class: "waves-effect waves-light btn" %>
-                </div>
-                </div>
-            </div>
+            <% end %>
         </div>
-    <% end %>
+    </div>
 <% end %>
