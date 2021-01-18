@@ -1,30 +1,47 @@
 <% if @healthcare_team.appointment > DateTime.now %>
-    <h5>You have an upcoming virtual appointment on:</h5>
+    <h4>You upcoming virtual appointment</h4>
 <% else %>
-    <h5>Your past visit on:</h5>
+    <h4>Your past visit</h4>
 <% end %>
 
-<h4><%= appointment_time(@healthcare_team) %></h4>
-<h3><%= @healthcare_team.doctor_specialty %></h3>
-<h4><%= @healthcare_team.doctor_fullname %></h4>
-<h4><%= @healthcare_team.doctor_hospital %></h4>
+<h6><b><%= appointment_time(@healthcare_team) %></b></h6>
+<br>
+<h6><b><%= @healthcare_team.doctor_specialty %></b></h6>
+<h6><b>Doctor: </b><%= @healthcare_team.doctor_fullname %></h6>
+<h6><b>Affiliated Hospital: </b><%= @healthcare_team.doctor_hospital %></h6>
+
+<br>
 
 <% if @healthcare_team.test_result %>
-    <h3>Test Result:</h3>
-    <h4><%= @healthcare_team.test_result %></h4>
+    <h6><b>Test Result: </b></h6>
+    <p><%= @healthcare_team.test_result %></p>
+<% else %>
+    <p><i>Test result pending.</i></p>
 <% end %>
+
+<br>
 
 <% if @healthcare_team.treatment_plans %>
-    <h3>Treatment Plans:</h3>
-    <h4><%= @healthcare_team.treatment_plans %></h4>
+    <h6><b>Treatment Plans: </b></h6>
+    <p><%= @healthcare_team.treatment_plans %></p>
+<% else %>
+    <p><i>Treatment plans pending.</i></p>
 <% end %>
+
+<br>
 
 <% if @healthcare_team.prescriptions %>
-    <h3>Prescriptions:</h3>
-    <h4><%= @healthcare_team.prescriptions %></h4>
+    <h6><b>Prescriptions: </b></h6>
+    <p><%= @healthcare_team.prescriptions %></p>
+<% else %>
+    <p><i>Prescriptions on pending.</i></p>
 <% end %>
 
+<br>
+
 <% if @healthcare_team.billing %>
-    <h3>Amount Due:</h3>
-    <h4><%= @healthcare_team.billing %></h4>
+    <h6><b>Amount Due: </b></h6>
+    <p>$<%= @healthcare_team.billing %></p>
+<% else %>
+    <p><i>Billing pending.</i></p>
 <% end %>

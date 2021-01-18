@@ -6,7 +6,7 @@
             <div class="card blue lighten-5">
                 <div class="card-content black-text">
                     <span class="card-title"><%= link_to "#{healthcare_team.doctor_fullname}", patient_healthcare_team_path(@patient, healthcare_team) %></span>
-                    <p><%= date_time(healthcare_team.appointment) %></p>
+                    <p class="truncate"><%= date_time(healthcare_team.appointment) %></p>
                 </div>
                 
                 <div class="card-action">

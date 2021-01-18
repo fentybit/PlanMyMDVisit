@@ -2,9 +2,19 @@
     <div class="valign-wrapper" style="min-height: 600px; height: 100%;">
         <div class="row" style="width:100%;">
             <% if !logged_in? %>
+                <div class="parallax-container">
+                    <div class="parallax"><img src="app/assets/images/main.png"></div>
+                </div>
+                
                 <%= link_to "Sign in with GitHub", "/auth/github", class: "waves-effect waves-light btn" %>
                 <%= link_to "Sign in with Google", "/auth/google_oauth2", class: "waves-effect waves-light btn" %>
             <% end %>
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('.parallax').parallax();
+    });
+</script>

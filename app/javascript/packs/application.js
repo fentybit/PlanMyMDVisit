@@ -14,9 +14,9 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-= require jquery
-= require jquery_ujs
-= require materialize
+// = require jquery
+// = require jquery_ujs
+// = require materialize
 
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
@@ -24,4 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     var elems = document.querySelectorAll('.dropdown-trigger');
     var instances = M.Dropdown.init(elems, options);
+
+    var elems = document.querySelectorAll('.parallax');
+    var instances = M.Parallax.init(elems, options);
 });
