@@ -8,7 +8,7 @@ Yes. I started off the project with `$ rails new plan-my-md-visit`.
   >   
   > • Include a many-to-many relationship implemented with has_many :through associations. The join table must include a user-submittable attribute — that is to say, some attribute other than its foreign keys that can be submitted by the app's user
 
-Refer to Entity Relationship Diagram below for `belongs_to`, `has_many` and `has_many :through` relationships, along with Active Record schema.
+Refer to Entity Relationship Diagram below for 'has_one`, `belongs_to`, `has_many` and `has_many :through` relationships, along with Active Record schema.
 
 <div align="center">
   <img src="./PlanMyMDVisit.jpg">
@@ -116,7 +116,7 @@ Standard user authentication is provided. <br>
 Password is managed by Ruby gem `bcrpyt` and Active Record macro `has_secure_password`. <br>
 
 - [x] Your authentication system must also allow login from some other service. Facebook, Twitter, Foursquare, Github, etc... <br>
-GitHub OmniAuth is provided as a third authentication system.
+GitHub and Google OmniAuth is provided for authentication systems.
 
 - [x] You must include and make use of a nested resource with the appropriate RESTful URLs.
   > • You must include a nested `new` route with form that relates to the parent resource  
