@@ -1,14 +1,14 @@
 # Plan My MD Visit
 
+<strong>Domain Modeling :: Virtual Healthcare</strong><br>
+Welcome to my simplistic version of Virtual Healthcare system.<br> 
+The automation benefits patients 24/7 seeking medical assistance, improving overall patient well-being!<br>
+
 <div align="center">
   <img src="app/assets/images/readme_main.gif">
 </div>
 
 <br>
-
-<strong>Domain Modeling :: Virtual Healthcare</strong><br>
-Welcome to my simplistic version of Virtual Healthcare system.<br> 
-The automation benefits patients 24/7 seeking medical assistance, improving overall patient well-being!<br>
 
 <p><a href="https://youtu.be/0cRPsyLgx88">YouTube Demo</a></p>
 <p><a href="https://dev.to/codinghall/plan-my-md-visit-c0l">DEV Blog</a></p>
