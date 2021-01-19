@@ -1,7 +1,7 @@
 # Plan My MD Visit
 
 <div align="center">
-  <img src="#">
+  <img src="app/assets/images/readme_main.gif">
 </div>
 
 <br>
@@ -10,13 +10,13 @@
 Welcome to my simplistic version of Virtual Healthcare system.<br> 
 The automation benefits patients 24/7 seeking medical assistance, improving overall patient well-being!<br>
 
-<p><a href="#">YouTube Demo</a></p>
-<p><a href="#">DEV Blog</a></p>
+<p><a href="https://youtu.be/0cRPsyLgx88">YouTube Demo</a></p>
+<p><a href="https://dev.to/codinghall/plan-my-md-visit-c0l">DEV Blog</a></p>
 
 ## About
 
-<p></p>
-<p></p>
+<p>The pandemic that has been lingering all around us since early 2020 has caused an apparent challenge to the current healthcare system. It is a testament to the new modern demand of digital healthcare. The conventional healthcare system is currently overflown with predominantly Covid-19 patients, exceeding their abilities to facilitate care of other medical patient needs.</p>
+<p>The Minimum Viable Product (MVP) of Plan My MD Visit app is to create a virtual patient system where the automation benefits patient 24/7 seeking virtual medical assistance, improving overall patient well-being. My application carries essential features and minimal attributes of tele-health platforms. Patients make their visits to the clinic, laboratory or hospital only when necessary and/or advised by medical professionals.</p>
 
 ## Features
 
@@ -35,8 +35,8 @@ The automation benefits patients 24/7 seeking medical assistance, improving over
 **Models** <br>
 User, Patient, Healthcare Team, Doctor<br>
 
-> user has_many :patients<br>
-> user has_many :doctors
+> user has_one :patient<br>
+> user has_one :doctor
 
 > patient `belongs_to` :user<br>
 > patient `has_many` :healthcare_teams<br>
@@ -58,7 +58,7 @@ DoctorsController<br>
 
 **User Account and Validation** <br>
 Standard Authentication: Log In, Log Out, Sign Up.<br>
-3rd Party Authentication: GitHub OmniAuth.<br>
+Provider Authentication: GitHub and Google OmniAuth.<br>
 
 ## API Database
 
@@ -82,8 +82,9 @@ Open Chrome browser, and redirect to 'http://localhost:3000' to start the app.
 ## Stack
 - [x] Active Record
 - [x] Bcrypt
-- [x] OmniAuth-GitHub
 - [x] SQLite3
+- [x] Simple Calendar
+- [x] OmniAuth GitHub and Google
 - [x] Open-URI
 - [x] Nokogiri
 - [x] JSON
@@ -92,4 +93,5 @@ Open Chrome browser, and redirect to 'http://localhost:3000' to start the app.
 ## Resources
 
 - [x] <a href="https://data.cms.gov/provider-data/dataset/mj5m-pzi6">The Centers for Medicare & Medicaid Services</a>
+- [x] <a href="https://github.com/excid3/simple_calendar">Simple Calendar</a>
 - [x] <a href="https://materializecss.com/">MaterializeCSS</a>
