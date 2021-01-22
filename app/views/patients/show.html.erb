@@ -10,8 +10,6 @@
 </div>
 
 <p><strong>plan my MD visit</strong> is not for use in emergencies or for messages that require immediate attention. For medical or psychiatric emergencies, call 911 or go to the nearest hospital.</p>
-    
-
 
 <%= link_to "Schedule an Appointment", select_specialty_path, class: "waves-effect waves-light btn" %> 
 
@@ -22,7 +20,7 @@
     
     <h5>Your Care Team</h5>
 
-    <% @patient.healthcare_teams.order(appointment: :desc).limit(2).each do |care_team| %>
+    <% twolatest_careteams(@patient).each do |care_team| %>
       <div class="card blue lighten-5">
         <div class="card-content black-text">
           <span class="card-title truncate"><%= care_team.doctor.specialty %></span>
