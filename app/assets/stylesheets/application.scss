@@ -124,7 +124,7 @@ $medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width 
 @import "materialize/components/datepicker";
 @import "materialize/components/timepicker";
 
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 body {
     display: flex;
