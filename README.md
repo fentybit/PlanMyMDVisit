@@ -79,7 +79,7 @@ $ rails s
 `rails db:seed` might take about 2-3 minutes extracting from `doctors.json` file.<br>
 Open Chrome browser, and redirect to 'http://localhost:3000' to start the app.
 
-*Alternatively, it is fully deployed on Heroku!*
+**Alternatively, it is fully deployed on Heroku!**
 <br>
 <a href="https://plan-my-md-visit.herokuapp.com/">Plan My MD Visit</a>
 
