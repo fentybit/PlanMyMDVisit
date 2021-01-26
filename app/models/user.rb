@@ -21,11 +21,13 @@ class User < ApplicationRecord
     end 
 
     def self.patients 
-        joins(:patient).where("user_id")
+        joins(:patient) # for postgres
+        # joins(:patient).where("user_id") # for sqlite3
     end 
 
     def self.doctors 
-        joins(:doctor).where("user_id")
+        joins(:doctor) # for postgres
+        # joins(:doctor).where("user_id") # for sqlite3
     end 
 
     def self.find_or_create_by_google(auth_hash)
