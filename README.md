@@ -79,6 +79,18 @@ $ rails s
 `rails db:seed` might take about 2-3 minutes extracting from `doctors.json` file.<br>
 Open Chrome browser, and redirect to 'http://localhost:3000' to start the app.
 
+Alternatively, it is fully deployed on Heroku! 
+<p><a href="https://plan-my-md-visit.herokuapp.com/">Plan My MD Visit</a></p>
+
+## Build Status and Future Improvement
+<p>Current project-built was completed in a 2-week timeframe from API data search, model association development, and MVP for both patient and admin user interface. Future cycle of product development as follows:</p>
+- [x] Add `Healthcare Provider` to model associations. Patients can find their healthcare providers, and sort through in-network doctors along with their specialties.
+- [x] Outsource from different APIs for doctors, currently restricted to Medicare Care Compare eligible professionals.
+- [x] Develop more robust user interface for users as doctors.
+- [x] Set up customized validations for scheduling appointments where each individual doctor can personalize their schedule availability. 
+- [x] Communication features (i.e., messaging) in between doctors and patients.
+- [x] Design separate CSS layouts for different user groups: patients, admins and doctors.
+
 ## Stack
 - [x] Active Record
 - [x] Bcrypt
