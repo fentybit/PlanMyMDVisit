@@ -1,30 +1,30 @@
 <nav>
     <div class="nav-wrapper">
+        <a class="brand-logo">plan my MD visit</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <% if logged_in? && current_patient %>
+                <li><%= link_to "Home", patient_path(current_patient), class: "waves-effect waves-teal btn-flat white-text" %></li>
+                <li><%= link_to "Care Team", patient_healthcare_teams_path(current_patient, current_patient.healthcare_teams), class: "waves-effect waves-teal btn-flat white-text" %></li>
+                <li><%= link_to "Doctors", doctors_path, class: "waves-effect waves-teal btn-flat white-text" %></li>
+                <li><%= link_to "Profile", user_path(session[:user_id]), class: "waves-effect waves-teal btn-flat white-text" %></li>
+                <li><%= button_to "Log Out", logout_path, method: "delete", class: "waves-effect waves-teal btn-flat white-text" %></li>
+
+            <% elsif logged_in? && current_user.admin == true %>
+                <li><%= link_to "Home", admin_users_path, class: "waves-effect waves-teal btn-flat white-text" %></li>
+                <li><%= link_to "Doctors", doctors_path, class: "waves-effect waves-teal btn-flat white-text" %></li>
+                <li><%= link_to "Profile", user_path(current_user.id), class: "waves-effect waves-teal btn-flat white-text" %></li>
+                <li><%= button_to "Log Out", logout_path, method: "delete", class: "waves-effect waves-teal btn-flat white-text" %></li>
+                
+            <% else %>
+                <li><%= link_to "Home", root_path, class: "waves-effect waves-teal btn-flat white-text" %></li>
+                <li><%= link_to "Login", signin_path, class: "waves-effect waves-teal btn-flat white-text" %></li>
+                <li><%= link_to "Sign Up", new_user_path, class: "waves-effect waves-teal btn-flat white-text" %></li>
+            <% end %>
+        </ul>
+        
         <div class="container">
-            <a class="brand-logo">plan my MD visit</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-            
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <% if logged_in? && current_patient %>
-                    <li><%= link_to "Home", patient_path(current_patient), class: "waves-effect waves-teal btn-flat white-text" %></li>
-                    <li><%= link_to "Care Team", patient_healthcare_teams_path(current_patient, current_patient.healthcare_teams), class: "waves-effect waves-teal btn-flat white-text" %></li>
-                    <li><%= link_to "Doctors", doctors_path, class: "waves-effect waves-teal btn-flat white-text" %></li>
-                    <li><%= link_to "Profile", user_path(session[:user_id]), class: "waves-effect waves-teal btn-flat white-text" %></li>
-                    <li><%= button_to "Log Out", logout_path, method: "delete", class: "waves-effect waves-teal btn-flat white-text" %></li>
-
-                <% elsif logged_in? && current_user.admin == true %>
-                    <li><%= link_to "Home", admin_users_path, class: "waves-effect waves-teal btn-flat white-text" %></li>
-                    <li><%= link_to "Doctors", doctors_path, class: "waves-effect waves-teal btn-flat white-text" %></li>
-                    <li><%= link_to "Profile", user_path(current_user.id), class: "waves-effect waves-teal btn-flat white-text" %></li>
-                    <li><%= button_to "Log Out", logout_path, method: "delete", class: "waves-effect waves-teal btn-flat white-text" %></li>
-                    
-                <% else %>
-                    <li><%= link_to "Home", root_path, class: "waves-effect waves-teal btn-flat white-text" %></li>
-                    <li><%= link_to "Login", signin_path, class: "waves-effect waves-teal btn-flat white-text" %></li>
-                    <li><%= link_to "Sign Up", new_user_path, class: "waves-effect waves-teal btn-flat white-text" %></li>
-                <% end %>
-            </ul>
-
             <ul class="side-nav" id="mobile-demo">
                 <% if logged_in? && current_patient %>
                     <li><%= link_to "Home", patient_path(current_patient), class: "waves-effect waves-teal btn-flat black-text" %></li>
