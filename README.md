@@ -86,11 +86,11 @@ Open Chrome browser, and redirect to 'http://localhost:3000' to start the app.
 ## Build Status and Future Improvement
 <p>Current project-built was completed in a 2-week timeframe from API data search, model association development, and MVP for both patient and admin user interface. Future cycle of product development as follows:</p>
 
-- [x] Add `Healthcare Provider` to model associations. Patients can find their healthcare providers, and sort through in-network doctors along with their specialties.
+- [x] Add `Healthcare Provider` to model associations. Patients can find their healthcare providers, and sort through in-network doctors by their specialties.
 - [x] Outsource from different APIs for doctors, currently restricted to Medicare Care Compare eligible professionals.
-- [x] Develop more robust user interface for users as doctors.
-- [x] Set up customized validations for scheduling appointments where each individual doctor can personalize their schedule availability. 
-- [x] Communication features (i.e., messaging) in between doctors and patients.
+- [x] Develop user interface for users as doctors.
+- [x] Set up customized validations for scheduling appointments where each individual doctor can personalize their preferred schedule. 
+- [x] Communication features (i.e., private messaging) in between doctors and patients.
 - [x] Design separate CSS layouts for different user groups: patients, admins and doctors.
 
 ## Stack
