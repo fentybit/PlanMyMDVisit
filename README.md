@@ -96,7 +96,7 @@ Open Chrome browser, and redirect to 'http://localhost:3000' to start the app.
 ## Stack
 - [x] Active Record
 - [x] Bcrypt
-- [x] SQLite3
+- [x] PostgreSQL
 - [x] Simple Calendar
 - [x] OmniAuth GitHub and Google
 - [x] Open-URI
