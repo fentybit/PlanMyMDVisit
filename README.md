@@ -81,7 +81,10 @@ Open Chrome browser, and redirect to 'http://localhost:3000' to start the app.
 
 **Alternatively, it is fully deployed on Heroku!**
 <br>
-<a href="https://plan-my-md-visit.herokuapp.com/">Plan My MD Visit</a>
+<p><a href="https://plan-my-md-visit.herokuapp.com/">Plan My MD Visit</a></p>
+<small>username || password = fentybit</small>
+
+<br>
 
 ## Build Status and Future Improvement
 <p>Current project-built was completed in a 2-week timeframe from API data search, model association development, and MVP for both patient and admin user interface. Future cycle of product development as follows:</p>
