@@ -83,6 +83,7 @@ Open Chrome browser, and redirect to 'http://localhost:3000' to start the app.
 <br>
 <p><a href="https://plan-my-md-visit.herokuapp.com/">Plan My MD Visit</a></p>
 <small>Logging in as a patient, username || password = fentybit</small>
+<br>
 <small>Logging in as an admin, username || password = admin</small>
 
 <br>
